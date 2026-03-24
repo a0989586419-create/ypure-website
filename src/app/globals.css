@@ -1,26 +1,83 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand-purple: #3A3A8C;
+  --color-brand-purple-dark: #1a1a3e;
+  --color-brand-purple-light: #5252b0;
+  --color-brand-gold: #E5B94C;
+  --color-brand-gold-light: #F0D078;
+  --color-brand-gold-dark: #C8A84E;
+  --color-bg-warm: #F8F7F3;
+  --color-bg-dark: #0d0d2b;
+  --color-text-dark: #1a1a2e;
+  --color-text-light: #6b7280;
+  --font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosanstc/v36/-nFkOG829Oofr2wohFbTp9i9ywIvDt1T39Cx.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosanstc/v36/-nFkOG829Oofr2wohFbTp9i9ywIvDt1T39Cx.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosanstc/v36/-nFkOG829Oofr2wohFbTp9i9ywIvDt1T39Cx.woff2) format('woff2');
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #3A3A8C;
+  border-radius: 4px;
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #E5B94C 0%, #F0D078 50%, #E5B94C 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
 }
