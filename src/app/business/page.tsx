@@ -381,13 +381,13 @@ export default function BusinessPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.15 }}
-                    className="rounded-2xl border border-[#E5B94C]/20 bg-[#0a0a0a] p-6"
+                    className="rounded-2xl border border-gray-200 bg-white shadow-lg p-6"
                   >
                     <Icon className="mb-4 h-8 w-8 text-[#E5B94C]" />
-                    <h3 className="mb-2 text-lg font-bold text-white">
+                    <h3 className="mb-2 text-lg font-bold text-gray-900">
                       {item.title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-gray-400">
+                    <p className="text-sm leading-relaxed text-gray-600">
                       {item.desc}
                     </p>
                   </motion.div>
@@ -500,7 +500,7 @@ export default function BusinessPage() {
                 </div>
 
                 {/* Revenue Chart */}
-                <div className="mt-8 bg-[#0a0a0a] rounded-xl p-4">
+                <div className="mt-8 bg-white shadow-lg rounded-xl p-4">
                   <p className="text-xs text-gray-500 mb-3">月營收對比（萬元）</p>
                   <svg viewBox="0 0 300 120" className="w-full">
                     {/* Before bar */}
@@ -657,7 +657,7 @@ export default function BusinessPage() {
               <div className="overflow-x-auto">
                 <table className="w-full min-w-[540px]">
                   <thead>
-                    <tr className="bg-[#0a0a0a]">
+                    <tr className="bg-gray-50">
                       <th className="px-6 py-4 text-left text-sm font-bold text-gray-400">
                         功能比較
                       </th>
