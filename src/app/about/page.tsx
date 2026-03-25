@@ -295,7 +295,7 @@ export default function AboutPage() {
                   key={member.name}
                   variants={fadeUp}
                   custom={i + 1}
-                  className="rounded-2xl bg-[#1a1a2e] p-8 text-center"
+                  className="rounded-2xl bg-white p-8 text-center shadow-lg"
                 >
                   {/* Avatar */}
                   <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[#E5B94C] to-[#F0D078]">
@@ -303,9 +303,9 @@ export default function AboutPage() {
                       {member.name.charAt(0)}
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-white">{member.name}</h3>
-                  <p className="mb-4 text-sm text-[#E5B94C]">{member.title}</p>
-                  <p className="text-sm leading-relaxed text-gray-400">{member.bio}</p>
+                  <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
+                  <p className="mb-4 text-sm font-semibold text-[#3A3A8C]">{member.title}</p>
+                  <p className="text-sm leading-relaxed text-gray-600">{member.bio}</p>
                 </motion.div>
               ))}
             </div>

@@ -58,15 +58,15 @@ export default function StorePreview() {
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="flex-shrink-0 w-[240px] md:w-auto bg-[#1a1a2e] rounded-2xl p-6 border border-white/5 hover:border-[#E5B94C]/30 transition-all duration-300"
+              className="flex-shrink-0 w-[240px] md:w-auto bg-white rounded-2xl p-6 border border-gray-200 shadow-lg hover:border-[#E5B94C]/30 hover:shadow-xl transition-all duration-300"
             >
               <div className="w-10 h-10 rounded-full bg-[#E5B94C]/10 flex items-center justify-center mb-4">
                 <MapPin className="w-5 h-5 text-[#E5B94C]" />
               </div>
-              <h3 className="font-bold text-white mb-2 text-sm leading-snug">
+              <h3 className="font-bold text-gray-900 mb-2 text-sm leading-snug">
                 {store.name}
               </h3>
-              <p className="text-gray-400 text-xs leading-relaxed">
+              <p className="text-gray-600 text-xs leading-relaxed">
                 {store.address}
               </p>
             </motion.div>

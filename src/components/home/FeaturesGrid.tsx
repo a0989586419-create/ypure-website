@@ -107,20 +107,20 @@ export default function FeaturesGrid() {
                 <div className="card-flip">
                   <div className="card-flip-inner">
                     {/* Front face */}
-                    <div className="card-flip-front bg-[#1a1a2e] rounded-2xl p-8 border border-white/5">
+                    <div className="card-flip-front bg-white rounded-2xl p-8 border border-gray-200 shadow-lg">
                       <div className="w-[60px] h-[60px] rounded-full bg-[#E5B94C]/10 flex items-center justify-center mb-5">
                         <Icon className="w-7 h-7 text-[#E5B94C]" />
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-2">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">
                         {feature.title}
                       </h3>
-                      <p className="text-gray-400 leading-relaxed">
+                      <p className="text-gray-600 leading-relaxed">
                         {feature.description}
                       </p>
                     </div>
 
                     {/* Back face */}
-                    <div className="card-flip-back bg-[#1a1a2e] rounded-2xl border border-white/5 overflow-hidden">
+                    <div className="card-flip-back bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
                       {/* Gold gradient top bar */}
                       <div className="h-1.5 bg-gradient-to-r from-[#E5B94C] via-[#F0D078] to-[#E5B94C]" />
                       <div className="p-8 flex flex-col justify-between h-[calc(100%-6px)]">

@@ -87,11 +87,11 @@ export default function DataResults() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ delay: i * 0.15, duration: 0.5 }}
-                className="relative bg-[#1a1a2e] rounded-2xl p-8 text-center border border-white/5 hover:border-[#E5B94C]/20 transition-all duration-300"
+                className="relative bg-white rounded-2xl p-8 text-center border border-gray-200 shadow-lg hover:border-[#E5B94C]/30 hover:shadow-xl transition-all duration-300"
               >
                 {/* Icon in top-right corner */}
                 <div className="absolute top-4 right-4">
-                  <Icon className="w-5 h-5 text-white/20" />
+                  <Icon className="w-5 h-5 text-gray-300" />
                 </div>
 
                 {/* Animated number */}
@@ -105,7 +105,7 @@ export default function DataResults() {
                 </div>
 
                 {/* Label */}
-                <p className="text-gray-400 text-sm md:text-base">{result.label}</p>
+                <p className="text-gray-600 text-sm md:text-base">{result.label}</p>
               </motion.div>
             );
           })}

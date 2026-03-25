@@ -47,10 +47,10 @@ const newsItems = [
 const categories = ["全部", "系統更新", "新店開幕", "優惠活動", "合作消息"];
 
 const categoryColors: Record<string, string> = {
-  系統更新: "bg-blue-500/20 text-blue-400",
-  新店開幕: "bg-green-500/20 text-green-400",
-  優惠活動: "bg-orange-500/20 text-orange-400",
-  合作消息: "bg-purple-500/20 text-purple-400",
+  系統更新: "bg-blue-100 text-blue-700",
+  新店開幕: "bg-green-100 text-green-700",
+  優惠活動: "bg-orange-100 text-orange-700",
+  合作消息: "bg-purple-100 text-purple-700",
 };
 
 export default function NewsPage() {
@@ -132,7 +132,7 @@ export default function NewsPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="group rounded-2xl border border-white/5 bg-white/[0.02] p-6 transition-all duration-300 hover:border-[#E5B94C]/20 hover:bg-white/[0.04]"
+                    className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:border-[#E5B94C]/30 hover:shadow-xl hover:-translate-y-1"
                   >
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
                       {/* Date Badge */}
@@ -156,10 +156,10 @@ export default function NewsPage() {
                             {item.category}
                           </span>
                         </div>
-                        <h2 className="mb-2 text-lg font-bold text-white group-hover:text-[#E5B94C] transition-colors duration-300">
+                        <h2 className="mb-2 text-lg font-bold text-gray-900 group-hover:text-[#E5B94C] transition-colors duration-300">
                           {item.title}
                         </h2>
-                        <p className="text-sm leading-relaxed text-gray-400">
+                        <p className="text-sm leading-relaxed text-gray-600">
                           {item.content}
                         </p>
                         <button className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-[#E5B94C] opacity-0 transition-all duration-300 group-hover:opacity-100">

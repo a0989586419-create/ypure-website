@@ -263,7 +263,7 @@ function ROICalculator() {
 
           {/* Result cards */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <div className="rounded-2xl bg-[#1a1a2e] p-6 text-center">
+            <div className="rounded-2xl bg-white shadow-lg p-6 text-center">
               <p className="mb-2 text-sm text-gray-400">預估月營收</p>
               <p className="text-3xl font-bold text-[#E5B94C]">
                 <motion.span
@@ -276,7 +276,7 @@ function ROICalculator() {
                 </motion.span>
               </p>
             </div>
-            <div className="rounded-2xl bg-[#1a1a2e] p-6 text-center">
+            <div className="rounded-2xl bg-white shadow-lg p-6 text-center">
               <p className="mb-2 text-sm text-gray-400">每月節省人力成本</p>
               <p className="text-3xl font-bold text-[#E5B94C]">
                 <motion.span
@@ -289,7 +289,7 @@ function ROICalculator() {
                 </motion.span>
               </p>
             </div>
-            <div className="rounded-2xl bg-[#1a1a2e] p-6 text-center">
+            <div className="rounded-2xl bg-white shadow-lg p-6 text-center">
               <p className="mb-2 text-sm text-gray-400">年投資報酬率</p>
               <p className="text-3xl font-bold text-[#E5B94C]">320%</p>
             </div>
@@ -347,13 +347,13 @@ export default function BusinessPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className="rounded-2xl border border-white/5 bg-[#1a1a2e] p-6"
+                    className="rounded-2xl border border-gray-200 bg-white shadow-lg p-6"
                   >
                     <Icon className={`mb-4 h-10 w-10 ${item.color}`} />
-                    <h3 className="mb-2 text-lg font-bold text-white">
+                    <h3 className="mb-2 text-lg font-bold text-gray-900">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-gray-400">{item.desc}</p>
+                    <p className="text-sm text-gray-600">{item.desc}</p>
                   </motion.div>
                 );
               })}
@@ -473,7 +473,7 @@ export default function BusinessPage() {
                       {beforeItems.map((item) => (
                         <div
                           key={item}
-                          className="flex items-center gap-2 rounded-lg bg-[#1a1a2e] px-3 py-2 text-sm text-gray-400"
+                          className="flex items-center gap-2 rounded-lg bg-white shadow-lg px-3 py-2 text-sm text-gray-400"
                         >
                           <X className="h-3.5 w-3.5 flex-shrink-0 text-red-400" />
                           {item}
@@ -489,7 +489,7 @@ export default function BusinessPage() {
                       {afterItems.map((item) => (
                         <div
                           key={item}
-                          className="flex items-center gap-2 rounded-lg border border-[#E5B94C]/20 bg-[#1a1a2e] px-3 py-2 text-sm text-gray-200"
+                          className="flex items-center gap-2 rounded-lg border border-[#E5B94C]/20 bg-white shadow-lg px-3 py-2 text-sm text-gray-200"
                         >
                           <Check className="h-3.5 w-3.5 flex-shrink-0 text-green-400" />
                           {item}
@@ -598,7 +598,7 @@ export default function BusinessPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.15 }}
-                  className={`relative overflow-hidden rounded-2xl border bg-[#1a1a2e] p-8 ${
+                  className={`relative overflow-hidden rounded-2xl border bg-white shadow-lg p-8 ${
                     plan.recommended
                       ? "border-[#E5B94C] ring-2 ring-[#E5B94C] shadow-[0_0_30px_rgba(229,185,76,0.2)] md:scale-105 md:-my-4"
                       : "border-white/5"
@@ -652,7 +652,7 @@ export default function BusinessPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-16 overflow-hidden rounded-2xl bg-[#1a1a2e]"
+              className="mt-16 overflow-hidden rounded-2xl bg-white shadow-lg"
             >
               <div className="overflow-x-auto">
                 <table className="w-full min-w-[540px]">
@@ -677,7 +677,7 @@ export default function BusinessPage() {
                       <tr
                         key={i}
                         className={
-                          i % 2 === 0 ? "bg-[#1a1a2e]" : "bg-[#151528]"
+                          i % 2 === 0 ? "bg-white shadow-lg" : "bg-gray-50"
                         }
                       >
                         <td className="px-6 py-3.5 text-sm text-gray-300">

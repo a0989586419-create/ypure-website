@@ -83,7 +83,7 @@ export default function ContactPage() {
   };
 
   const inputClass =
-    "w-full bg-[#0d0d2b] text-white border border-gray-700 rounded-xl px-4 py-3 focus:outline-none focus:border-[#E5B94C] transition-colors duration-300 placeholder-gray-500";
+    "w-full bg-gray-100 text-gray-900 border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-[#E5B94C] transition-colors duration-300 placeholder-gray-400";
 
   return (
     <>
@@ -119,7 +119,7 @@ export default function ContactPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="lg:col-span-3"
               >
-                <div className="bg-[#1a1a2e] rounded-2xl p-8">
+                <div className="bg-white rounded-2xl p-8 shadow-lg">
                   {/* Response Time Badge */}
                   <div className="flex items-center gap-3 bg-[#E5B94C]/10 border border-[#E5B94C]/30 rounded-xl p-4 mb-6">
                     <Clock className="w-5 h-5 text-[#E5B94C] shrink-0" />
@@ -129,7 +129,7 @@ export default function ContactPage() {
                     <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse shrink-0" />
                   </div>
 
-                  <h2 className="text-2xl font-bold text-white mb-6">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">
                     傳送訊息
                   </h2>
 
@@ -149,7 +149,7 @@ export default function ContactPage() {
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div>
-                        <label className="block text-gray-400 text-sm mb-2">
+                        <label className="block text-gray-600 text-sm mb-2">
                           姓名 *
                         </label>
                         <input
@@ -163,7 +163,7 @@ export default function ContactPage() {
                         />
                       </div>
                       <div>
-                        <label className="block text-gray-400 text-sm mb-2">
+                        <label className="block text-gray-600 text-sm mb-2">
                           Email *
                         </label>
                         <input
@@ -180,7 +180,7 @@ export default function ContactPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div>
-                        <label className="block text-gray-400 text-sm mb-2">
+                        <label className="block text-gray-600 text-sm mb-2">
                           電話
                         </label>
                         <input
@@ -193,7 +193,7 @@ export default function ContactPage() {
                         />
                       </div>
                       <div>
-                        <label className="block text-gray-400 text-sm mb-2">
+                        <label className="block text-gray-600 text-sm mb-2">
                           類別 *
                         </label>
                         <select
@@ -252,17 +252,17 @@ export default function ContactPage() {
                         <Icon className="w-5 h-5 text-[#E5B94C]" />
                       </div>
                       <div>
-                        <div className="text-gray-400 text-sm">
+                        <div className="text-gray-500 text-sm">
                           {info.title}
                         </div>
-                        <div className="text-white font-medium">
+                        <div className="text-gray-900 font-medium">
                           {info.value}
                         </div>
                       </div>
                     </>
                   );
                   const className =
-                    "flex items-center gap-4 bg-[#1a1a2e] rounded-2xl p-5 hover:bg-[#1f1f3a] transition-colors duration-300";
+                    "flex items-center gap-4 bg-white rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300";
                   return info.href ? (
                     <a
                       key={info.title}

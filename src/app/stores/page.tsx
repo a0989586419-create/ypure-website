@@ -146,15 +146,15 @@ export default function StoresPage() {
                   variants={fadeUp}
                   initial="hidden"
                   animate={gridInView ? "visible" : "hidden"}
-                  className="bg-[#1a1a2e] rounded-2xl p-6 border-l-4 border-[#E5B94C] hover:bg-[#1f1f3a] transition-colors duration-300"
+                  className="bg-white rounded-2xl p-6 border-l-4 border-[#E5B94C] shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <div className="mb-4 -mx-2 -mt-2">
                     <StoreFront variant={((i % 3) + 1) as 1 | 2 | 3} className="w-full h-24 opacity-30" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
                     {store.name}
                   </h3>
-                  <div className="flex items-start gap-2 text-gray-400 mb-4">
+                  <div className="flex items-start gap-2 text-gray-600 mb-4">
                     <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-[#E5B94C]" />
                     <span className="text-sm">{store.address}</span>
                   </div>
@@ -423,11 +423,11 @@ export default function StoresPage() {
                   variants={fadeUp}
                   initial="hidden"
                   animate={comingSoonInView ? "visible" : "hidden"}
-                  className="rounded-2xl bg-[#1a1a2e] p-6 text-center"
+                  className="rounded-2xl bg-white p-6 text-center shadow-lg"
                 >
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <span className="h-2 w-2 rounded-full bg-[#E5B94C] animate-pulse" />
-                    <span className="text-2xl font-bold text-white">{item.city}</span>
+                    <span className="text-2xl font-bold text-gray-900">{item.city}</span>
                   </div>
                   <p className="text-sm text-[#E5B94C]">{item.stores}</p>
                 </motion.div>

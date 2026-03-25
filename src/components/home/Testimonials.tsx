@@ -61,7 +61,7 @@ export default function Testimonials() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="bg-[#1a1a2e] rounded-2xl p-8 border-l-4 border-[#E5B94C] flex flex-col"
+              className="bg-white rounded-2xl p-8 border-l-4 border-[#E5B94C] shadow-lg flex flex-col"
             >
               {/* Quote mark */}
               <svg
@@ -75,7 +75,7 @@ export default function Testimonials() {
               </svg>
 
               {/* Quote text */}
-              <p className="text-gray-300 leading-relaxed mb-6 flex-1">
+              <p className="text-gray-600 leading-relaxed mb-6 flex-1">
                 {t.quote}
               </p>
 
@@ -85,7 +85,7 @@ export default function Testimonials() {
                   {t.name.charAt(0)}
                 </div>
                 <div>
-                  <div className="text-white font-bold">{t.name}</div>
+                  <div className="text-gray-900 font-bold">{t.name}</div>
                   <div className="text-[#E5B94C] text-sm">
                     {t.store} - {t.city}
                   </div>

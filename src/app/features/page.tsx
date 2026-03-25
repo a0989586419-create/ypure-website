@@ -250,18 +250,18 @@ function InteractiveFeatures() {
                 onClick={() => setActiveIndex(i)}
                 className={`w-full text-left p-5 rounded-2xl transition-all duration-300 ${
                   i === activeIndex
-                    ? "bg-[#1a1a2e] border-l-4 border-[#E5B94C]"
+                    ? "bg-white shadow-lg border-l-4 border-[#E5B94C]"
                     : "bg-transparent hover:bg-white/5 border-l-4 border-transparent"
                 }`}
               >
-                <h3 className={`font-bold mb-1 ${i === activeIndex ? "text-[#E5B94C]" : "text-white"}`}>
+                <h3 className={`font-bold mb-1 ${i === activeIndex ? "text-[#3A3A8C]" : "text-white"}`}>
                   {f.title}
                 </h3>
-                <p className="text-sm text-gray-400">{f.description}</p>
+                <p className={`text-sm ${i === activeIndex ? "text-gray-600" : "text-gray-400"}`}>{f.description}</p>
                 {i === activeIndex && (
                   <motion.ul initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-3 space-y-1.5">
                     {f.bullets.map((b) => (
-                      <li key={b} className="flex items-center gap-2 text-sm text-gray-300">
+                      <li key={b} className="flex items-center gap-2 text-sm text-gray-700">
                         <Check className="w-4 h-4 text-[#E5B94C] shrink-0" /> {b}
                       </li>
                     ))}
@@ -425,32 +425,32 @@ export default function FeaturesPage() {
                     className="grid grid-cols-2 gap-4 sm:gap-6"
                   >
                     {/* Traditional side */}
-                    <div className="rounded-2xl bg-[#1a1a2e] p-4 sm:p-5">
+                    <div className="rounded-2xl bg-white shadow-lg p-4 sm:p-5">
                       <div className="flex items-center gap-2 mb-1">
-                        <Icon className="h-4 w-4 flex-shrink-0 text-gray-600" />
-                        <p className="text-xs font-bold text-gray-600">
+                        <Icon className="h-4 w-4 flex-shrink-0 text-gray-500" />
+                        <p className="text-xs font-bold text-gray-500">
                           {row.label}
                         </p>
                       </div>
                       <div className="flex items-center gap-2">
-                        <X className="h-4 w-4 flex-shrink-0 text-red-400" />
-                        <span className="text-sm text-gray-400">
+                        <X className="h-4 w-4 flex-shrink-0 text-red-500" />
+                        <span className="text-sm text-gray-600">
                           {row.traditional}
                         </span>
                       </div>
                     </div>
 
                     {/* YPURE side */}
-                    <div className="rounded-2xl border-l-4 border-[#E5B94C] bg-[#1a1a2e] p-4 sm:p-5">
+                    <div className="rounded-2xl border-l-4 border-[#E5B94C] bg-white shadow-lg p-4 sm:p-5">
                       <div className="flex items-center gap-2 mb-1">
-                        <Icon className="h-4 w-4 flex-shrink-0 text-[#E5B94C]/60" />
-                        <p className="text-xs font-bold text-[#E5B94C]/60">
+                        <Icon className="h-4 w-4 flex-shrink-0 text-[#3A3A8C]/60" />
+                        <p className="text-xs font-bold text-[#3A3A8C]/60">
                           {row.label}
                         </p>
                       </div>
                       <div className="flex items-center gap-2">
-                        <Check className="h-4 w-4 flex-shrink-0 text-green-400" />
-                        <span className="text-sm text-gray-200">
+                        <Check className="h-4 w-4 flex-shrink-0 text-green-500" />
+                        <span className="text-sm text-gray-700">
                           {row.ypure}
                         </span>
                       </div>
@@ -483,7 +483,7 @@ export default function FeaturesPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.15 }}
-                  className="relative rounded-2xl bg-[#1a1a2e] p-8 text-center"
+                  className="relative rounded-2xl bg-white shadow-lg p-8 text-center"
                 >
                   {/* Decorative ring */}
                   <div className="pointer-events-none absolute inset-4">
@@ -491,13 +491,13 @@ export default function FeaturesPage() {
                   </div>
 
                   <div className="relative z-10">
-                    <p className="mb-2 text-5xl font-bold text-[#E5B94C]">
+                    <p className="mb-2 text-5xl font-bold text-[#3A3A8C]">
                       {m.value}
                     </p>
-                    <p className="mb-1 text-lg font-bold text-white">
+                    <p className="mb-1 text-lg font-bold text-gray-900">
                       {m.label}
                     </p>
-                    <p className="text-sm text-gray-400">{m.desc}</p>
+                    <p className="text-sm text-gray-600">{m.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -528,15 +528,15 @@ export default function FeaturesPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className="rounded-2xl border border-white/5 bg-[#1a1a2e] p-6 transition-colors duration-300 hover:border-[#E5B94C]/30"
+                    className="rounded-2xl border border-gray-200 bg-white shadow-lg p-6 transition-colors duration-300 hover:border-[#E5B94C]/30"
                   >
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#E5B94C]/10">
                       <Icon className="h-6 w-6 text-[#E5B94C]" />
                     </div>
-                    <h3 className="mb-2 text-lg font-bold text-white">
+                    <h3 className="mb-2 text-lg font-bold text-gray-900">
                       {tech.title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-gray-400">
+                    <p className="text-sm leading-relaxed text-gray-600">
                       {tech.desc}
                     </p>
                   </motion.div>
