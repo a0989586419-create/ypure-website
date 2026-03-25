@@ -73,11 +73,11 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="tel:0800-YPURE"
+                  href="tel:0800018888"
                   className="flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
                 >
                   <Phone className="h-4 w-4 flex-shrink-0" />
-                  <span>0800-YPURE</span>
+                  <span>0800-018-888</span>
                 </a>
               </li>
             </ul>
@@ -89,7 +89,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="https://line.me"
+                  href="https://line.me/R/ti/p/@ypure"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"

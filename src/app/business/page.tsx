@@ -762,7 +762,7 @@ export default function BusinessPage() {
               <p className="text-gray-400 text-xs">免費諮詢，無需綁約</p>
             </div>
             <div className="flex gap-3 w-full sm:w-auto">
-              <a href="tel:0800897873" className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2.5 text-white text-sm hover:bg-white/10 transition">
+              <a href="tel:0800018888" className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2.5 text-white text-sm hover:bg-white/10 transition">
                 <Phone className="w-4 h-4" /> 電話諮詢
               </a>
               <Link href="/contact" className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-[#E5B94C] rounded-full px-5 py-2.5 text-[#0a0a0a] text-sm font-bold hover:bg-[#F0D078] transition">

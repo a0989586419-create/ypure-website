@@ -24,14 +24,14 @@ const contactInfo = [
   {
     icon: Phone,
     title: "電話",
-    value: "0800-YPURE",
-    href: "tel:0800897873",
+    value: "0800-018-888",
+    href: "tel:0800018888",
   },
   {
     icon: MessageCircle,
     title: "LINE 官方帳號",
     value: "@ypure",
-    href: "#",
+    href: "https://line.me/R/ti/p/@ypure",
   },
   {
     icon: Clock,
@@ -42,7 +42,7 @@ const contactInfo = [
 ];
 
 const socialLinks = [
-  { icon: MessageCircle, label: "LINE 官方帳號", href: "#" },
+  { icon: MessageCircle, label: "LINE 官方帳號", href: "https://line.me/R/ti/p/@ypure" },
   { icon: ExternalLink, label: "Facebook", href: "#" },
   { icon: Camera, label: "Instagram", href: "#" },
 ];

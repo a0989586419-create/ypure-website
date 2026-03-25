@@ -187,13 +187,13 @@ function FaqAccordion({ items }: { items: FaqItem[] }) {
         return (
           <div
             key={i}
-            className="bg-[#1a1a2e] rounded-2xl overflow-hidden border border-white/5 hover:border-[#E5B94C]/20 transition-colors duration-300"
+            className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-[#E5B94C]/40 transition-colors duration-300"
           >
             <button
               onClick={() => setOpenIndex(isOpen ? null : i)}
               className="w-full flex items-center justify-between p-5 text-left"
             >
-              <span className="text-white font-medium pr-4">
+              <span className="text-gray-900 font-medium pr-4">
                 {item.question}
               </span>
               <motion.div
@@ -213,30 +213,30 @@ function FaqAccordion({ items }: { items: FaqItem[] }) {
                   transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
                   <div className="px-5 pb-5">
-                    <div className="text-gray-400 leading-relaxed">
+                    <div className="text-gray-600 leading-relaxed">
                       {item.answer}
                     </div>
-                    <div className="border-t border-white/5 mt-4 pt-4">
+                    <div className="border-t border-gray-200 mt-4 pt-4">
                       {hasVoted ? (
                         <p className="text-xs text-[#E5B94C]">
                           感謝您的回饋！
                         </p>
                       ) : (
                         <div className="flex items-center gap-3">
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-gray-400">
                             這個回答有幫助嗎？
                           </span>
                           <button
                             onClick={() => handleVote(i)}
-                            className="w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg hover:bg-[#E5B94C]/10 transition-colors"
+                            className="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-[#E5B94C]/20 transition-colors"
                           >
-                            <ThumbsUp className="w-4 h-4 text-gray-400" />
+                            <ThumbsUp className="w-4 h-4 text-gray-500" />
                           </button>
                           <button
                             onClick={() => handleVote(i)}
-                            className="w-8 h-8 flex items-center justify-center bg-white/5 rounded-lg hover:bg-[#E5B94C]/10 transition-colors"
+                            className="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-lg hover:bg-[#E5B94C]/20 transition-colors"
                           >
-                            <ThumbsDown className="w-4 h-4 text-gray-400" />
+                            <ThumbsDown className="w-4 h-4 text-gray-500" />
                           </button>
                         </div>
                       )}
@@ -309,7 +309,7 @@ export default function FaqPage() {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="搜尋常見問題..."
-                className="bg-[#1a1a2e] border border-white/10 rounded-xl px-4 py-3 pl-12 text-white w-full focus:outline-none focus:border-[#E5B94C] transition-colors duration-300 placeholder-gray-500"
+                className="bg-white border border-gray-200 rounded-xl px-4 py-3 pl-12 text-gray-900 w-full focus:outline-none focus:border-[#E5B94C] transition-colors duration-300 placeholder-gray-400"
               />
             </div>
 
