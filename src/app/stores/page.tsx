@@ -246,7 +246,7 @@ export default function StoresPage() {
                   {/* Taiwan outline */}
                   <path
                     d="M100 30 C120 30, 155 80, 160 120 C165 160, 155 200, 150 240 C145 280, 130 320, 120 360 C110 400, 105 440, 100 470 C95 440, 85 400, 80 360 C70 320, 55 280, 50 240 C45 200, 40 160, 45 120 C50 80, 80 30, 100 30Z"
-                    fill="#1a1a2e"
+                    fill="#3A3A8C"
                     stroke="#E5B94C"
                     strokeWidth="1.5"
                     strokeOpacity="0.4"
