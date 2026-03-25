@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import StoreFront from "@/components/illustrations/StoreFront";
 import Link from "next/link";
 
 const stores = [
@@ -147,6 +148,9 @@ export default function StoresPage() {
                   animate={gridInView ? "visible" : "hidden"}
                   className="bg-[#1a1a2e] rounded-2xl p-6 border-l-4 border-[#E5B94C] hover:bg-[#1f1f3a] transition-colors duration-300"
                 >
+                  <div className="mb-4 -mx-2 -mt-2">
+                    <StoreFront variant={((i % 3) + 1) as 1 | 2 | 3} className="w-full h-24 opacity-30" />
+                  </div>
                   <h3 className="text-xl font-bold text-white mb-3">
                     {store.name}
                   </h3>

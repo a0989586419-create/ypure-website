@@ -7,6 +7,7 @@ import HowItWorks from "@/components/home/HowItWorks";
 import Testimonials from "@/components/home/Testimonials";
 import StorePreview from "@/components/home/StorePreview";
 import SecurityBadges from "@/components/home/SecurityBadges";
+import DataResults from "@/components/home/DataResults";
 import CTABanner from "@/components/home/CTABanner";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
         <FeaturesGrid />
         <HowItWorks />
         <Testimonials />
+        <DataResults />
         <StorePreview />
         <SecurityBadges />
         <CTABanner />

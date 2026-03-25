@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import LaundryScene from "@/components/illustrations/LaundryScene";
 
 /* ------------------------------------------------------------------ */
 /*  Animation helpers                                                  */
@@ -238,14 +239,13 @@ export default function AboutPage() {
               </p>
             </motion.div>
 
-            {/* Decorative orb */}
+            {/* Illustration */}
             <motion.div
               variants={fadeUp}
               custom={1}
               className="relative flex flex-shrink-0 items-center justify-center"
             >
-              <div className="h-56 w-56 rounded-full bg-gradient-to-br from-[#E5B94C]/30 to-[#F0D078]/10 blur-2xl sm:h-72 sm:w-72" />
-              <div className="absolute h-36 w-36 rounded-full bg-gradient-to-br from-[#E5B94C] to-[#F0D078] opacity-60 sm:h-44 sm:w-44" />
+              <LaundryScene className="w-64 sm:w-80 opacity-60" />
             </motion.div>
           </div>
         </AnimatedSection>

@@ -19,6 +19,8 @@ import {
   Star,
   X,
   Minus,
+  Phone,
+  MessageCircle,
 } from "lucide-react";
 
 const fadeUp = {
@@ -226,7 +228,14 @@ function ROICalculator() {
               機台數量
             </label>
             <div className="text-6xl font-bold text-[#E5B94C]">
-              {machineCount}
+              <motion.span
+                key={machineCount}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 200 }}
+              >
+                {machineCount}
+              </motion.span>
             </div>
             <p className="mb-6 text-sm text-gray-500">台</p>
             <input
@@ -249,13 +258,27 @@ function ROICalculator() {
             <div className="rounded-2xl bg-[#1a1a2e] p-6 text-center">
               <p className="mb-2 text-sm text-gray-400">預估月營收</p>
               <p className="text-3xl font-bold text-[#E5B94C]">
-                NT${monthlyRevenue.toLocaleString()}
+                <motion.span
+                  key={monthlyRevenue}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ type: "spring", stiffness: 200 }}
+                >
+                  NT${monthlyRevenue.toLocaleString()}
+                </motion.span>
               </p>
             </div>
             <div className="rounded-2xl bg-[#1a1a2e] p-6 text-center">
               <p className="mb-2 text-sm text-gray-400">每月節省人力成本</p>
               <p className="text-3xl font-bold text-[#E5B94C]">
-                NT${monthlySaving.toLocaleString()}
+                <motion.span
+                  key={monthlySaving}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ type: "spring", stiffness: 200 }}
+                >
+                  NT${monthlySaving.toLocaleString()}
+                </motion.span>
               </p>
             </div>
             <div className="rounded-2xl bg-[#1a1a2e] p-6 text-center">
@@ -441,10 +464,10 @@ export default function BusinessPage() {
           </div>
         </section>
 
-        {/* ── ROI Calculator ─────────────────────────────────────── */}
+        {/* ROI Calculator */}
         <ROICalculator />
 
-        {/* ── Success Story ──────────────────────────────────────── */}
+        {/* Success Story */}
         <section className="bg-[#0a0a0a] py-20">
           <div className="mx-auto max-w-6xl px-4">
             <motion.h2
@@ -504,6 +527,23 @@ export default function BusinessPage() {
                   </div>
                 </div>
 
+                {/* Revenue Chart */}
+                <div className="mt-8 bg-[#0a0a0a] rounded-xl p-4">
+                  <p className="text-xs text-gray-500 mb-3">月營收對比（萬元）</p>
+                  <svg viewBox="0 0 300 120" className="w-full">
+                    {/* Before bar */}
+                    <rect x="30" y="60" width="80" height="50" rx="4" fill="#333" />
+                    <text x="70" y="55" textAnchor="middle" fill="#666" fontSize="11">導入前</text>
+                    <text x="70" y="90" textAnchor="middle" fill="#999" fontSize="13" fontWeight="bold">4.8</text>
+                    {/* After bar */}
+                    <rect x="150" y="20" width="80" height="90" rx="4" fill="#E5B94C" />
+                    <text x="190" y="15" textAnchor="middle" fill="#E5B94C" fontSize="11">導入後</text>
+                    <text x="190" y="72" textAnchor="middle" fill="#0a0a0a" fontSize="13" fontWeight="bold">6.7</text>
+                    {/* Growth arrow */}
+                    <text x="260" y="70" fill="#4ade80" fontSize="14" fontWeight="bold">+40%</text>
+                  </svg>
+                </div>
+
                 <p className="mt-6 text-sm italic text-gray-500">
                   -- 陳老闆，悠洗自助洗衣
                 </p>
@@ -526,7 +566,7 @@ export default function BusinessPage() {
           </div>
         </section>
 
-        {/* ── Implementation Timeline ────────────────────────────── */}
+        {/* Implementation Timeline */}
         <section className="bg-[#111] py-20">
           <div className="mx-auto max-w-6xl px-4">
             <motion.h2
@@ -578,7 +618,7 @@ export default function BusinessPage() {
             >
               合作方案
             </motion.h2>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-3">
               {plans.map((plan, i) => (
                 <motion.div
                   key={i}
@@ -588,15 +628,15 @@ export default function BusinessPage() {
                   transition={{ duration: 0.5, delay: i * 0.15 }}
                   className={`relative overflow-hidden rounded-2xl border bg-[#1a1a2e] p-8 ${
                     plan.recommended
-                      ? "border-[#E5B94C]"
+                      ? "border-[#E5B94C] ring-2 ring-[#E5B94C] shadow-[0_0_30px_rgba(229,185,76,0.2)] md:scale-105 md:-my-4"
                       : "border-white/5"
                   }`}
                 >
                   {plan.recommended && (
-                    <div className="absolute right-0 top-0 flex items-center gap-1 rounded-bl-xl bg-[#E5B94C] px-4 py-1.5">
-                      <Star className="h-3.5 w-3.5 text-[#0a0a0a]" />
-                      <span className="text-xs font-bold text-[#0a0a0a]">
-                        推薦
+                    <div className="absolute right-0 top-0 flex items-center gap-1.5 rounded-bl-xl bg-[#E5B94C] px-5 py-2">
+                      <Star className="h-4 w-4 animate-pulse text-[#0a0a0a]" />
+                      <span className="text-sm font-bold text-[#0a0a0a]">
+                        最受歡迎
                       </span>
                     </div>
                   )}
@@ -634,7 +674,7 @@ export default function BusinessPage() {
               ))}
             </div>
 
-            {/* ── Pricing Feature Matrix ─────────────────────────── */}
+            {/* Pricing Feature Matrix */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -708,6 +748,29 @@ export default function BusinessPage() {
             </motion.div>
           </div>
         </section>
+
+        {/* Floating Demo CTA */}
+        <motion.div
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          transition={{ delay: 2, duration: 0.5 }}
+          className="fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-r from-[#0a0a0a] via-[#1a1a2e] to-[#0a0a0a] border-t border-[#E5B94C]/20 px-4 py-3"
+        >
+          <div className="max-w-6xl mx-auto flex items-center justify-between">
+            <div className="hidden sm:block">
+              <p className="text-white font-bold text-sm">準備好升級您的洗衣店了嗎？</p>
+              <p className="text-gray-400 text-xs">免費諮詢，無需綁約</p>
+            </div>
+            <div className="flex gap-3 w-full sm:w-auto">
+              <a href="tel:0800897873" className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2.5 text-white text-sm hover:bg-white/10 transition">
+                <Phone className="w-4 h-4" /> 電話諮詢
+              </a>
+              <Link href="/contact" className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-[#E5B94C] rounded-full px-5 py-2.5 text-[#0a0a0a] text-sm font-bold hover:bg-[#F0D078] transition">
+                <MessageCircle className="w-4 h-4" /> 免費諮詢
+              </Link>
+            </div>
+          </div>
+        </motion.div>
       </main>
       <Footer />
     </>

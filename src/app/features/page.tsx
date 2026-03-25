@@ -1,8 +1,22 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { ArrowRight, Check, X, Wifi, Cloud, MessageCircle, Cpu } from "lucide-react";
+import { useState, useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import {
+  ArrowRight,
+  Check,
+  X,
+  Wifi,
+  Cloud,
+  MessageCircle,
+  Cpu,
+  CreditCard,
+  Monitor,
+  Bell,
+  Users,
+  BarChart3,
+  Globe,
+} from "lucide-react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -111,12 +125,12 @@ const features: Feature[] = [
 /* ------------------------------------------------------------------ */
 
 const comparisonRows = [
-  { label: "付款方式", traditional: "僅限投幣", ypure: "LINE Pay + 投幣 + 儲值" },
-  { label: "機台監控", traditional: "需親自到店查看", ypure: "手機即時遠端監控" },
-  { label: "顧客通知", traditional: "無法通知", ypure: "LINE 自動推播" },
-  { label: "會員管理", traditional: "無會員機制", ypure: "儲值/等級/優惠券" },
-  { label: "營收報表", traditional: "手動計算", ypure: "自動雲端報表" },
-  { label: "遠端管理", traditional: "必須到場", ypure: "隨時隨地管理" },
+  { label: "付款方式", traditional: "僅限投幣", ypure: "LINE Pay + 投幣 + 儲值", icon: CreditCard },
+  { label: "機台監控", traditional: "需親自到店查看", ypure: "手機即時遠端監控", icon: Monitor },
+  { label: "顧客通知", traditional: "無法通知", ypure: "LINE 自動推播", icon: Bell },
+  { label: "會員管理", traditional: "無會員機制", ypure: "儲值/等級/優惠券", icon: Users },
+  { label: "營收報表", traditional: "手動計算", ypure: "自動雲端報表", icon: BarChart3 },
+  { label: "遠端管理", traditional: "必須到場", ypure: "隨時隨地管理", icon: Globe },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -157,7 +171,7 @@ const techAdvantages = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Feature row component                                              */
+/*  Feature row component (kept for reference, not rendered)           */
 /* ------------------------------------------------------------------ */
 
 function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
@@ -211,6 +225,69 @@ function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
         )}
       </div>
     </AnimatedSection>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Interactive Features component                                     */
+/* ------------------------------------------------------------------ */
+
+function InteractiveFeatures() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeFeature = features[activeIndex];
+
+  return (
+    <section className="bg-[#0a0a0a] py-20 sm:py-28">
+      <div className="mx-auto max-w-6xl px-4">
+        <h2 className="mb-12 text-center text-3xl font-bold text-white">核心功能展示</h2>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left: Feature tabs */}
+          <div className="space-y-3">
+            {features.map((f, i) => (
+              <button
+                key={f.title}
+                onClick={() => setActiveIndex(i)}
+                className={`w-full text-left p-5 rounded-2xl transition-all duration-300 ${
+                  i === activeIndex
+                    ? "bg-[#1a1a2e] border-l-4 border-[#E5B94C]"
+                    : "bg-transparent hover:bg-white/5 border-l-4 border-transparent"
+                }`}
+              >
+                <h3 className={`font-bold mb-1 ${i === activeIndex ? "text-[#E5B94C]" : "text-white"}`}>
+                  {f.title}
+                </h3>
+                <p className="text-sm text-gray-400">{f.description}</p>
+                {i === activeIndex && (
+                  <motion.ul initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-3 space-y-1.5">
+                    {f.bullets.map((b) => (
+                      <li key={b} className="flex items-center gap-2 text-sm text-gray-300">
+                        <Check className="w-4 h-4 text-[#E5B94C] shrink-0" /> {b}
+                      </li>
+                    ))}
+                  </motion.ul>
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Right: Phone mockup */}
+          <div className="flex justify-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeFeature.phoneVariant}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <MockupPhone variant={activeFeature.phoneVariant} />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -308,10 +385,8 @@ export default function FeaturesPage() {
           </div>
         </section>
 
-        {/* -- Feature Rows ----------------------------------------- */}
-        {features.map((f, i) => (
-          <FeatureRow key={f.title} feature={f} index={i} />
-        ))}
+        {/* -- Interactive Feature Showcase -------------------------- */}
+        <InteractiveFeatures />
 
         {/* -- Comparison Table ------------------------------------- */}
         <section className="bg-[#0a0a0a] py-20 sm:py-28">
@@ -338,42 +413,51 @@ export default function FeaturesPage() {
 
             {/* Comparison rows */}
             <div className="space-y-4">
-              {comparisonRows.map((row, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="grid grid-cols-2 gap-4 sm:gap-6"
-                >
-                  {/* Traditional side */}
-                  <div className="rounded-2xl bg-[#1a1a2e] p-4 sm:p-5">
-                    <p className="mb-1 text-xs font-bold text-gray-600">
-                      {row.label}
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <X className="h-4 w-4 flex-shrink-0 text-red-400" />
-                      <span className="text-sm text-gray-400">
-                        {row.traditional}
-                      </span>
+              {comparisonRows.map((row, i) => {
+                const Icon = row.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.08 }}
+                    className="grid grid-cols-2 gap-4 sm:gap-6"
+                  >
+                    {/* Traditional side */}
+                    <div className="rounded-2xl bg-[#1a1a2e] p-4 sm:p-5">
+                      <div className="flex items-center gap-2 mb-1">
+                        <Icon className="h-4 w-4 flex-shrink-0 text-gray-600" />
+                        <p className="text-xs font-bold text-gray-600">
+                          {row.label}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <X className="h-4 w-4 flex-shrink-0 text-red-400" />
+                        <span className="text-sm text-gray-400">
+                          {row.traditional}
+                        </span>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* YPURE side */}
-                  <div className="rounded-2xl border-l-4 border-[#E5B94C] bg-[#1a1a2e] p-4 sm:p-5">
-                    <p className="mb-1 text-xs font-bold text-[#E5B94C]/60">
-                      {row.label}
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <Check className="h-4 w-4 flex-shrink-0 text-green-400" />
-                      <span className="text-sm text-gray-200">
-                        {row.ypure}
-                      </span>
+                    {/* YPURE side */}
+                    <div className="rounded-2xl border-l-4 border-[#E5B94C] bg-[#1a1a2e] p-4 sm:p-5">
+                      <div className="flex items-center gap-2 mb-1">
+                        <Icon className="h-4 w-4 flex-shrink-0 text-[#E5B94C]/60" />
+                        <p className="text-xs font-bold text-[#E5B94C]/60">
+                          {row.label}
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Check className="h-4 w-4 flex-shrink-0 text-green-400" />
+                        <span className="text-sm text-gray-200">
+                          {row.ypure}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>

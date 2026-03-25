@@ -39,6 +39,32 @@ export default function HeroSection() {
         }}
       />
 
+      {/* Particle field - deterministic positions to avoid hydration mismatch */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[
+          [12,8,0.3,4.2,0.5],[85,15,0.4,5.1,1.2],[45,72,0.2,3.8,2.1],[23,55,0.5,6.3,0.3],
+          [67,33,0.15,4.7,3.5],[91,68,0.35,5.5,1.8],[8,42,0.25,3.2,4.2],[54,88,0.4,6.1,0.8],
+          [78,22,0.3,4.5,2.7],[33,95,0.2,5.8,1.5],[95,50,0.45,3.5,3.1],[18,78,0.3,6.7,0.1],
+          [62,12,0.15,4.1,4.5],[40,60,0.5,5.3,2.3],[72,85,0.25,3.9,1.1],[5,30,0.35,6.5,3.8],
+          [88,45,0.2,4.8,0.7],[50,18,0.4,5.6,2.9],[28,70,0.3,3.4,4.0],[75,92,0.15,6.0,1.6],
+          [15,50,0.45,4.3,3.3],[60,38,0.2,5.2,0.4],[82,75,0.35,3.7,2.5],[38,25,0.25,6.4,1.9],
+          [92,58,0.3,4.6,4.3],[22,88,0.4,5.9,0.9],[55,5,0.15,3.1,3.7],[70,65,0.5,6.2,2.0],
+          [10,15,0.35,4.9,1.4],[48,48,0.25,5.4,3.6],
+        ].map(([x, y, op, dur, delay], i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 rounded-full bg-[#E5B94C]"
+            style={{
+              left: `${x}%`,
+              top: `${y}%`,
+              opacity: op,
+              animation: `particle-float ${dur}s ease-in-out infinite`,
+              animationDelay: `${delay}s`,
+            }}
+          />
+        ))}
+      </div>
+
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         {/* Badge */}
