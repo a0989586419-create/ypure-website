@@ -56,7 +56,7 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
-            <img src="/ypure-logo.png" alt="雲管家" className="h-10" />
+            <img src="/cloudmonster-logo.png" alt="雲管家 Cloud Monster" className="h-14" />
           </Link>
 
           {/* Desktop Navigation */}

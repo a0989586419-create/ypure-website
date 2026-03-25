@@ -31,7 +31,7 @@ export default function Footer() {
           {/* Column 1: Logo + Description */}
           <div>
             <Link href="/">
-              <img src="/ypure-logo.png" alt="雲管家" className="mb-4 h-10" />
+              <img src="/cloudmonster-logo.png" alt="雲管家 Cloud Monster" className="mb-4 h-14" />
             </Link>
             <p className="mb-2 text-lg font-semibold text-gray-100">
               智慧自助洗衣管理系統
@@ -64,11 +64,11 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="mailto:contact@ypure.com"
+                  href="mailto:contact@cloudmonster.com.tw"
                   className="flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
                 >
                   <Mail className="h-4 w-4 flex-shrink-0" />
-                  <span>contact@ypure.com</span>
+                  <span>contact@cloudmonster.com.tw</span>
                 </a>
               </li>
               <li>
@@ -158,7 +158,7 @@ export default function Footer() {
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
             <p className="text-sm text-gray-400">
-              &copy; 2025-2026 雲管家 YPURE Cloud Butler. All rights reserved.
+              &copy; 2025-2026 雲管家 Cloud Monster. All rights reserved.
             </p>
             <div className="flex items-center gap-4 text-sm text-gray-500">
               <a

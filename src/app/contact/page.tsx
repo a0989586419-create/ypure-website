@@ -18,8 +18,8 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "contact@ypure.com",
-    href: "mailto:contact@ypure.com",
+    value: "contact@cloudmonster.com.tw",
+    href: "mailto:contact@cloudmonster.com.tw",
   },
   {
     icon: Phone,

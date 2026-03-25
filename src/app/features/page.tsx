@@ -125,12 +125,12 @@ const features: Feature[] = [
 /* ------------------------------------------------------------------ */
 
 const comparisonRows = [
-  { label: "付款方式", traditional: "僅限投幣", ypure: "LINE Pay + 投幣 + 儲值", icon: CreditCard },
-  { label: "機台監控", traditional: "需親自到店查看", ypure: "手機即時遠端監控", icon: Monitor },
-  { label: "顧客通知", traditional: "無法通知", ypure: "LINE 自動推播", icon: Bell },
-  { label: "會員管理", traditional: "無會員機制", ypure: "儲值/等級/優惠券", icon: Users },
-  { label: "營收報表", traditional: "手動計算", ypure: "自動雲端報表", icon: BarChart3 },
-  { label: "遠端管理", traditional: "必須到場", ypure: "隨時隨地管理", icon: Globe },
+  { label: "付款方式", traditional: "僅限投幣", cloudmonster: "LINE Pay + 投幣 + 儲值", icon: CreditCard },
+  { label: "機台監控", traditional: "需親自到店查看", cloudmonster: "手機即時遠端監控", icon: Monitor },
+  { label: "顧客通知", traditional: "無法通知", cloudmonster: "LINE 自動推播", icon: Bell },
+  { label: "會員管理", traditional: "無會員機制", cloudmonster: "儲值/等級/優惠券", icon: Users },
+  { label: "營收報表", traditional: "手動計算", cloudmonster: "自動雲端報表", icon: BarChart3 },
+  { label: "遠端管理", traditional: "必須到場", cloudmonster: "隨時隨地管理", icon: Globe },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -440,7 +440,7 @@ export default function FeaturesPage() {
                       </div>
                     </div>
 
-                    {/* YPURE side */}
+                    {/* Cloud Monster side */}
                     <div className="rounded-2xl border-l-4 border-[#E5B94C] bg-white shadow-lg p-4 sm:p-5">
                       <div className="flex items-center gap-2 mb-1">
                         <Icon className="h-4 w-4 flex-shrink-0 text-[#3A3A8C]/60" />
@@ -451,7 +451,7 @@ export default function FeaturesPage() {
                       <div className="flex items-center gap-2">
                         <Check className="h-4 w-4 flex-shrink-0 text-green-500" />
                         <span className="text-sm text-gray-700">
-                          {row.ypure}
+                          {row.cloudmonster}
                         </span>
                       </div>
                     </div>
