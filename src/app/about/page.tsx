@@ -103,6 +103,35 @@ const coreValues = [
   },
 ];
 
+const teamMembers = [
+  {
+    name: "陳致遠",
+    title: "創辦人暨執行長",
+    bio: "深耕物聯網產業十年，曾任職於工業自動化領域。致力於將 IoT 技術應用於傳統產業轉型。",
+  },
+  {
+    name: "林子翔",
+    title: "技術長",
+    bio: "全端工程師，專精 Node.js 與 React 開發。負責雲管家系統架構設計、LINE LIFF 與 MQTT 通訊整合。",
+  },
+  {
+    name: "王雅琪",
+    title: "營運長",
+    bio: "擁有連鎖零售業管理經驗，負責合作店家拓展、客戶成功與營運支援策略。",
+  },
+];
+
+const techStack = [
+  { name: "LINE LIFF", category: "前端介面" },
+  { name: "React", category: "前端框架" },
+  { name: "Node.js", category: "後端服務" },
+  { name: "PostgreSQL", category: "資料庫" },
+  { name: "MQTT", category: "IoT 通訊" },
+  { name: "Modbus RTU", category: "設備控制" },
+  { name: "LINE Pay", category: "支付整合" },
+  { name: "Railway", category: "雲端部署" },
+];
+
 const milestones = [
   {
     year: "2024 Q1",
@@ -124,6 +153,21 @@ const milestones = [
     title: "持續進化",
     desc: "推出會員等級、推薦碼系統，持續優化用戶體驗",
   },
+  {
+    year: "2025 Q2",
+    title: "會員系統升級",
+    desc: "推出會員等級制度與推薦碼系統，提升顧客黏著度",
+  },
+  {
+    year: "2025 Q4",
+    title: "全台 10 家店",
+    desc: "擴展合作版圖至台北、新竹、台南，覆蓋更多縣市",
+  },
+  {
+    year: "2026",
+    title: "全台 20 家店",
+    desc: "建立完整的全台服務網絡，成為自助洗衣智慧化的領導品牌",
+  },
 ];
 
 const stats = [
@@ -142,7 +186,7 @@ export default function AboutPage() {
     <>
       <Header />
       <main className="overflow-hidden">
-        {/* ── Hero ─────────────────────────────────────────────── */}
+        {/* -- Hero -------------------------------------------------- */}
         <section className="relative flex min-h-[50vh] items-center justify-center bg-gradient-to-b from-[#0a0a0a] to-[#111]">
           <div
             className="pointer-events-none absolute right-[10%] top-[20%] h-80 w-80 rounded-full opacity-10 blur-3xl"
@@ -176,7 +220,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ── Vision ───────────────────────────────────────────── */}
+        {/* -- Vision ------------------------------------------------ */}
         <AnimatedSection className="bg-[#0a0a0a] py-24">
           <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 px-4 sm:px-6 lg:flex-row lg:px-8">
             {/* Text */}
@@ -187,8 +231,10 @@ export default function AboutPage() {
             >
               <h2 className="mb-6 text-3xl font-bold text-white">我們的願景</h2>
               <p className="leading-relaxed text-gray-300">
-                雲管家致力於將傳統自助洗衣店轉型為智慧化服務。透過 IoT
-                物聯網技術、LINE 生態系整合，以及雲端管理平台，我們讓消費者享受更便利的洗衣體驗，也讓店家經營更加輕鬆高效。
+                雲管家誕生於一個簡單的觀察：傳統自助洗衣店的經營方式，已經跟不上消費者的數位生活習慣。我們看到店主每天花費大量時間在收款對帳、機器巡檢、客訴處理上，而消費者則苦於找不到零錢、不知道機器何時洗好。
+              </p>
+              <p className="mt-4 leading-relaxed text-gray-300">
+                2024 年，我們組建了一支結合 IoT 硬體、雲端軟體與商業營運的跨領域團隊，打造出雲管家 — 一套從手機到洗衣機、從付款到通知、從單店到多店的完整智慧洗衣解決方案。我們的目標不只是讓洗衣更方便，更要讓每一位店主都能輕鬆經營、用數據做決策。
               </p>
             </motion.div>
 
@@ -204,7 +250,7 @@ export default function AboutPage() {
           </div>
         </AnimatedSection>
 
-        {/* ── Core Values ──────────────────────────────────────── */}
+        {/* -- Core Values ------------------------------------------- */}
         <AnimatedSection className="bg-[#111] py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <motion.h2
@@ -232,7 +278,70 @@ export default function AboutPage() {
           </div>
         </AnimatedSection>
 
-        {/* ── Milestones Timeline ──────────────────────────────── */}
+        {/* -- Team -------------------------------------------------- */}
+        <AnimatedSection className="bg-[#0a0a0a] py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <motion.h2
+              variants={fadeUp}
+              custom={0}
+              className="mb-14 text-center text-3xl font-bold text-white"
+            >
+              核心團隊
+            </motion.h2>
+
+            <div className="grid gap-8 md:grid-cols-3">
+              {teamMembers.map((member, i) => (
+                <motion.div
+                  key={member.name}
+                  variants={fadeUp}
+                  custom={i + 1}
+                  className="rounded-2xl bg-[#1a1a2e] p-8 text-center"
+                >
+                  {/* Avatar */}
+                  <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[#E5B94C] to-[#F0D078]">
+                    <span className="text-2xl font-bold text-white">
+                      {member.name.charAt(0)}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white">{member.name}</h3>
+                  <p className="mb-4 text-sm text-[#E5B94C]">{member.title}</p>
+                  <p className="text-sm leading-relaxed text-gray-400">{member.bio}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </AnimatedSection>
+
+        {/* -- Tech Stack -------------------------------------------- */}
+        <AnimatedSection className="bg-[#111] py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <motion.h2
+              variants={fadeUp}
+              custom={0}
+              className="mb-14 text-center text-3xl font-bold text-white"
+            >
+              技術架構
+            </motion.h2>
+
+            <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+              {techStack.map((tech, i) => (
+                <motion.div
+                  key={tech.name}
+                  variants={fadeUp}
+                  custom={i + 1}
+                  className="rounded-2xl border border-white/5 bg-[#0a0a0a] p-6 text-center transition-colors duration-300 hover:border-[#E5B94C]/30"
+                >
+                  <p className="text-lg font-bold text-white">{tech.name}</p>
+                  <p className="mt-2 text-xs uppercase tracking-wider text-[#E5B94C]">
+                    {tech.category}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </AnimatedSection>
+
+        {/* -- Milestones Timeline ----------------------------------- */}
         <AnimatedSection className="bg-[#0a0a0a] py-24">
           <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
             <motion.h2
@@ -277,7 +386,7 @@ export default function AboutPage() {
           </div>
         </AnimatedSection>
 
-        {/* ── Stats / Numbers ──────────────────────────────────── */}
+        {/* -- Stats / Numbers --------------------------------------- */}
         <AnimatedSection className="bg-[#111] py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 gap-10 text-center md:grid-cols-4">
@@ -291,7 +400,7 @@ export default function AboutPage() {
           </div>
         </AnimatedSection>
 
-        {/* ── CTA ──────────────────────────────────────────────── */}
+        {/* -- CTA --------------------------------------------------- */}
         <AnimatedSection className="bg-gradient-to-b from-[#0a0a0a] to-[#111] py-24">
           <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
             <motion.h2

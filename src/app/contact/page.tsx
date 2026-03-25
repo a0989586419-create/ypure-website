@@ -2,7 +2,15 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MessageCircle, Clock, CheckCircle } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MessageCircle,
+  Clock,
+  CheckCircle,
+  ExternalLink,
+  Camera,
+} from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -33,6 +41,12 @@ const contactInfo = [
   },
 ];
 
+const socialLinks = [
+  { icon: MessageCircle, label: "LINE 官方帳號", href: "#" },
+  { icon: ExternalLink, label: "Facebook", href: "#" },
+  { icon: Camera, label: "Instagram", href: "#" },
+];
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -42,6 +56,8 @@ export default function ContactPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,6 +72,14 @@ export default function ContactPage() {
     >
   ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail.trim()) return;
+    setNewsletterSubmitted(true);
+    setNewsletterEmail("");
+    setTimeout(() => setNewsletterSubmitted(false), 5000);
   };
 
   const inputClass =
@@ -96,6 +120,15 @@ export default function ContactPage() {
                 className="lg:col-span-3"
               >
                 <div className="bg-[#1a1a2e] rounded-2xl p-8">
+                  {/* Response Time Badge */}
+                  <div className="flex items-center gap-3 bg-[#E5B94C]/10 border border-[#E5B94C]/30 rounded-xl p-4 mb-6">
+                    <Clock className="w-5 h-5 text-[#E5B94C] shrink-0" />
+                    <span className="text-[#E5B94C] text-sm flex-1">
+                      我們承諾 24 小時內回覆您的訊息
+                    </span>
+                    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse shrink-0" />
+                  </div>
+
                   <h2 className="text-2xl font-bold text-white mb-6">
                     傳送訊息
                   </h2>
@@ -228,7 +261,8 @@ export default function ContactPage() {
                       </div>
                     </>
                   );
-                  const className = "flex items-center gap-4 bg-[#1a1a2e] rounded-2xl p-5 hover:bg-[#1f1f3a] transition-colors duration-300";
+                  const className =
+                    "flex items-center gap-4 bg-[#1a1a2e] rounded-2xl p-5 hover:bg-[#1f1f3a] transition-colors duration-300";
                   return info.href ? (
                     <a
                       key={info.title}
@@ -243,8 +277,80 @@ export default function ContactPage() {
                     </div>
                   );
                 })}
+
+                {/* Social Media Section */}
+                <div className="pt-4">
+                  <h3 className="text-sm font-bold text-gray-400 mb-3">
+                    關注我們
+                  </h3>
+                  <div className="flex gap-3">
+                    {socialLinks.map((link) => {
+                      const Icon = link.icon;
+                      return (
+                        <a
+                          key={link.label}
+                          href={link.href}
+                          className="bg-white/5 rounded-xl px-4 py-3 flex items-center gap-2 text-sm text-gray-300 hover:bg-[#E5B94C]/10 hover:text-[#E5B94C] transition-colors duration-300"
+                        >
+                          <Icon className="w-4 h-4" />
+                          {link.label}
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        {/* Newsletter Section */}
+        <section className="py-20 bg-[#111] px-4">
+          <div className="max-w-xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-2xl font-bold text-white mb-3">
+                訂閱最新消息
+              </h2>
+              <p className="text-gray-400 mb-8">
+                第一時間獲取系統更新、新店開幕與優惠資訊
+              </p>
+
+              {newsletterSubmitted ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex items-center justify-center gap-2 text-[#E5B94C]"
+                >
+                  <CheckCircle className="w-5 h-5" />
+                  <span>感謝訂閱！</span>
+                </motion.div>
+              ) : (
+                <form
+                  onSubmit={handleNewsletterSubmit}
+                  className="flex max-w-md mx-auto"
+                >
+                  <input
+                    type="email"
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    required
+                    placeholder="輸入您的 Email"
+                    className="bg-[#0a0a0a] border border-gray-700 rounded-l-xl px-4 py-3 flex-1 text-white focus:outline-none focus:border-[#E5B94C] transition-colors duration-300 placeholder-gray-500"
+                  />
+                  <button
+                    type="submit"
+                    className="bg-[#E5B94C] text-[#0a0a0a] font-bold rounded-r-xl px-6 py-3 hover:bg-[#F0D078] transition-colors duration-300"
+                  >
+                    訂閱
+                  </button>
+                </form>
+              )}
+            </motion.div>
           </div>
         </section>
       </main>

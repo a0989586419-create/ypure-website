@@ -101,6 +101,29 @@ export default function HeroSection() {
             店家合作
           </Link>
         </motion.div>
+
+        {/* Stats counter row */}
+        <motion.div
+          custom={4}
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 mt-16"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { value: "5+", label: "合作店家" },
+              { value: "30+", label: "台機器" },
+              { value: "1,000+", label: "活躍用戶" },
+              { value: "99.9%", label: "系統穩定度" },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-3xl font-bold text-[#E5B94C]">{stat.value}</div>
+                <div className="text-white text-sm mt-1">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}

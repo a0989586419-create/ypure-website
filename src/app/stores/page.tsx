@@ -2,7 +2,18 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { MapPin, Clock, Wifi, CreditCard, Bell, ExternalLink } from "lucide-react";
+import {
+  MapPin,
+  Clock,
+  Wifi,
+  CreditCard,
+  Bell,
+  ExternalLink,
+  Thermometer,
+  ParkingSquare,
+  Accessibility,
+  Wind,
+} from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
@@ -15,6 +26,8 @@ const stores = [
     city: "嘉義",
     machines: 6,
     mapUrl: "https://maps.google.com/?q=嘉義市東區文雅街181號",
+    owner: "陳老闆",
+    quote: "雲管家讓我每月省下 20 小時的對帳時間",
   },
   {
     id: "s2",
@@ -23,6 +36,8 @@ const stores = [
     city: "苗栗",
     machines: 6,
     mapUrl: "https://maps.google.com/?q=苗栗市玉清路51號",
+    owner: "林老闆",
+    quote: "顧客用 LINE Pay 付款後，回頭率提升 35%",
   },
   {
     id: "s3",
@@ -31,6 +46,8 @@ const stores = [
     city: "苗栗",
     machines: 6,
     mapUrl: "https://maps.google.com/?q=苗栗市為公路290號",
+    owner: "林老闆",
+    quote: "兩家店的營收報表一目了然，管理輕鬆很多",
   },
   {
     id: "s4",
@@ -39,6 +56,8 @@ const stores = [
     city: "台中",
     machines: 6,
     mapUrl: "https://maps.google.com/?q=台中市西屯區福聯街22巷2號",
+    owner: "張老闆",
+    quote: "機器故障即時通知，維修速度快了一倍",
   },
   {
     id: "s5",
@@ -47,6 +66,8 @@ const stores = [
     city: "高雄",
     machines: 6,
     mapUrl: "https://maps.google.com/?q=高雄市鳳山區北平路214號",
+    owner: "黃老闆",
+    quote: "儲值優惠帶動了客單價，營收穩定成長",
   },
 ];
 
@@ -54,6 +75,20 @@ const tags = [
   { icon: CreditCard, label: "LINE Pay" },
   { icon: Wifi, label: "即時監控" },
   { icon: Bell, label: "推播通知" },
+];
+
+const amenities = [
+  { icon: Clock, label: "24hr" },
+  { icon: Wind, label: "冷氣" },
+  { icon: ParkingSquare, label: "停車" },
+  { icon: Accessibility, label: "無障礙" },
+];
+
+const upcomingCities = [
+  { city: "台北", stores: "3-5 家" },
+  { city: "新竹", stores: "2-3 家" },
+  { city: "台南", stores: "2-3 家" },
+  { city: "桃園", stores: "2-3 家" },
 ];
 
 const fadeUp = {
@@ -70,6 +105,8 @@ export default function StoresPage() {
   const gridInView = useInView(gridRef, { once: true, margin: "-50px" });
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInView = useInView(mapRef, { once: true, margin: "-50px" });
+  const comingSoonRef = useRef<HTMLDivElement>(null);
+  const comingSoonInView = useInView(comingSoonRef, { once: true, margin: "-50px" });
 
   return (
     <>
@@ -128,7 +165,7 @@ export default function StoresPage() {
                     </span>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mb-5">
+                  <div className="flex flex-wrap gap-2 mb-3">
                     {tags.map((tag) => {
                       const Icon = tag.icon;
                       return (
@@ -141,6 +178,32 @@ export default function StoresPage() {
                         </span>
                       );
                     })}
+                  </div>
+
+                  {/* Amenity Icons */}
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {amenities.map((amenity) => {
+                      const Icon = amenity.icon;
+                      return (
+                        <span
+                          key={amenity.label}
+                          className="inline-flex items-center gap-0.5 text-[10px] text-gray-500 bg-white/[0.03] px-2 py-0.5 rounded-full border border-white/5"
+                        >
+                          <Icon className="w-2.5 h-2.5" />
+                          {amenity.label}
+                        </span>
+                      );
+                    })}
+                  </div>
+
+                  {/* Testimonial Quote */}
+                  <div className="border-l-2 border-[#E5B94C]/50 pl-3 mb-5">
+                    <p className="text-sm italic text-gray-400">
+                      &ldquo;{store.quote}&rdquo;
+                    </p>
+                    <p className="mt-1 text-xs text-gray-500">
+                      -- {store.owner}
+                    </p>
                   </div>
 
                   <a
@@ -216,7 +279,7 @@ export default function StoresPage() {
                     fontSize="12"
                     fontWeight="bold"
                   >
-                    苗栗 ×2
+                    苗栗 x2
                   </text>
 
                   {/* 台中 */}
@@ -330,6 +393,42 @@ export default function StoresPage() {
                 </p>
               </div>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Coming Soon Section */}
+        <section className="py-20 bg-[#0a0a0a] px-4">
+          <div className="max-w-4xl mx-auto text-center" ref={comingSoonRef}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={comingSoonInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl font-bold text-white mb-4">即將擴展</h2>
+              <div className="w-16 h-1 bg-[#E5B94C] mx-auto mb-4 rounded-full" />
+              <p className="text-gray-400 mb-12">
+                2026 年目標：全台 20 家合作店
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {upcomingCities.map((item, i) => (
+                <motion.div
+                  key={item.city}
+                  custom={i + 1}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={comingSoonInView ? "visible" : "hidden"}
+                  className="rounded-2xl bg-[#1a1a2e] p-6 text-center"
+                >
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <span className="h-2 w-2 rounded-full bg-[#E5B94C] animate-pulse" />
+                    <span className="text-2xl font-bold text-white">{item.city}</span>
+                  </div>
+                  <p className="text-sm text-[#E5B94C]">{item.stores}</p>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 

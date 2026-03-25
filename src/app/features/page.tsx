@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, X, Wifi, Cloud, MessageCircle, Cpu } from "lucide-react";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -107,6 +107,56 @@ const features: Feature[] = [
 ];
 
 /* ------------------------------------------------------------------ */
+/*  Comparison data                                                    */
+/* ------------------------------------------------------------------ */
+
+const comparisonRows = [
+  { label: "付款方式", traditional: "僅限投幣", ypure: "LINE Pay + 投幣 + 儲值" },
+  { label: "機台監控", traditional: "需親自到店查看", ypure: "手機即時遠端監控" },
+  { label: "顧客通知", traditional: "無法通知", ypure: "LINE 自動推播" },
+  { label: "會員管理", traditional: "無會員機制", ypure: "儲值/等級/優惠券" },
+  { label: "營收報表", traditional: "手動計算", ypure: "自動雲端報表" },
+  { label: "遠端管理", traditional: "必須到場", ypure: "隨時隨地管理" },
+];
+
+/* ------------------------------------------------------------------ */
+/*  Performance metrics data                                           */
+/* ------------------------------------------------------------------ */
+
+const metrics = [
+  { value: "99.9%", label: "系統穩定度", desc: "全年無休的高可用性架構" },
+  { value: "<1s", label: "平均回應時間", desc: "即時操作，零延遲體驗" },
+  { value: "256-bit", label: "資料加密", desc: "銀行等級的安全防護" },
+];
+
+/* ------------------------------------------------------------------ */
+/*  Tech advantages data                                               */
+/* ------------------------------------------------------------------ */
+
+const techAdvantages = [
+  {
+    icon: Wifi,
+    title: "即時 IoT 通訊",
+    desc: "MQTT 協議確保設備狀態即時同步，延遲低於 100ms",
+  },
+  {
+    icon: Cloud,
+    title: "雲端彈性架構",
+    desc: "Railway + Vercel 雲端部署，自動擴展不怕流量爆增",
+  },
+  {
+    icon: MessageCircle,
+    title: "LINE 生態整合",
+    desc: "LIFF 技術無需下載 APP，LINE 內直接操作一切功能",
+  },
+  {
+    icon: Cpu,
+    title: "工業級協議",
+    desc: "Modbus RTU 工業通訊，穩定控制各品牌洗衣機與烘衣機",
+  },
+];
+
+/* ------------------------------------------------------------------ */
 /*  Feature row component                                              */
 /* ------------------------------------------------------------------ */
 
@@ -165,6 +215,57 @@ function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Metric Ring SVG                                                    */
+/* ------------------------------------------------------------------ */
+
+function MetricRing() {
+  return (
+    <svg
+      className="absolute inset-0 h-full w-full"
+      viewBox="0 0 120 120"
+      fill="none"
+    >
+      <circle
+        cx="60"
+        cy="60"
+        r="54"
+        stroke="#E5B94C"
+        strokeWidth="1"
+        strokeDasharray="8 6"
+        opacity="0.2"
+      >
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="0 60 60"
+          to="360 60 60"
+          dur="30s"
+          repeatCount="indefinite"
+        />
+      </circle>
+      <circle
+        cx="60"
+        cy="60"
+        r="46"
+        stroke="#E5B94C"
+        strokeWidth="0.5"
+        strokeDasharray="4 8"
+        opacity="0.1"
+      >
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          from="360 60 60"
+          to="0 60 60"
+          dur="20s"
+          repeatCount="indefinite"
+        />
+      </circle>
+    </svg>
+  );
+}
+
+/* ------------------------------------------------------------------ */
 /*  Page                                                               */
 /* ------------------------------------------------------------------ */
 
@@ -173,7 +274,7 @@ export default function FeaturesPage() {
     <>
       <Header />
       <main className="overflow-hidden">
-        {/* ── Hero ─────────────────────────────────────────────── */}
+        {/* -- Hero ------------------------------------------------- */}
         <section className="relative flex min-h-[50vh] items-center justify-center bg-gradient-to-b from-[#0a0a0a] to-[#111]">
           <div
             className="pointer-events-none absolute left-[10%] top-[30%] h-72 w-72 rounded-full opacity-10 blur-3xl"
@@ -207,12 +308,161 @@ export default function FeaturesPage() {
           </div>
         </section>
 
-        {/* ── Feature Rows ─────────────────────────────────────── */}
+        {/* -- Feature Rows ----------------------------------------- */}
         {features.map((f, i) => (
           <FeatureRow key={f.title} feature={f} index={i} />
         ))}
 
-        {/* ── Bottom CTA ───────────────────────────────────────── */}
+        {/* -- Comparison Table ------------------------------------- */}
+        <section className="bg-[#0a0a0a] py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mb-12 text-center text-3xl font-bold text-white"
+            >
+              雲管家 vs 傳統洗衣店
+            </motion.h2>
+
+            {/* Column headers */}
+            <div className="mb-6 grid grid-cols-2 gap-4 sm:gap-6">
+              <div className="text-center text-lg font-bold text-gray-500">
+                傳統洗衣店
+              </div>
+              <div className="text-center text-lg font-bold text-[#E5B94C]">
+                雲管家智慧系統
+              </div>
+            </div>
+
+            {/* Comparison rows */}
+            <div className="space-y-4">
+              {comparisonRows.map((row, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                  className="grid grid-cols-2 gap-4 sm:gap-6"
+                >
+                  {/* Traditional side */}
+                  <div className="rounded-2xl bg-[#1a1a2e] p-4 sm:p-5">
+                    <p className="mb-1 text-xs font-bold text-gray-600">
+                      {row.label}
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <X className="h-4 w-4 flex-shrink-0 text-red-400" />
+                      <span className="text-sm text-gray-400">
+                        {row.traditional}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* YPURE side */}
+                  <div className="rounded-2xl border-l-4 border-[#E5B94C] bg-[#1a1a2e] p-4 sm:p-5">
+                    <p className="mb-1 text-xs font-bold text-[#E5B94C]/60">
+                      {row.label}
+                    </p>
+                    <div className="flex items-center gap-2">
+                      <Check className="h-4 w-4 flex-shrink-0 text-green-400" />
+                      <span className="text-sm text-gray-200">
+                        {row.ypure}
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* -- Performance Metrics ---------------------------------- */}
+        <section className="bg-[#111] py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mb-12 text-center text-3xl font-bold text-white"
+            >
+              企業級效能保證
+            </motion.h2>
+
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+              {metrics.map((m, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.15 }}
+                  className="relative rounded-2xl bg-[#1a1a2e] p-8 text-center"
+                >
+                  {/* Decorative ring */}
+                  <div className="pointer-events-none absolute inset-4">
+                    <MetricRing />
+                  </div>
+
+                  <div className="relative z-10">
+                    <p className="mb-2 text-5xl font-bold text-[#E5B94C]">
+                      {m.value}
+                    </p>
+                    <p className="mb-1 text-lg font-bold text-white">
+                      {m.label}
+                    </p>
+                    <p className="text-sm text-gray-400">{m.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* -- Technology Advantages -------------------------------- */}
+        <section className="bg-[#0a0a0a] py-20 sm:py-28">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mb-12 text-center text-3xl font-bold text-white"
+            >
+              技術優勢
+            </motion.h2>
+
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {techAdvantages.map((tech, i) => {
+                const Icon = tech.icon;
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                    className="rounded-2xl border border-white/5 bg-[#1a1a2e] p-6 transition-colors duration-300 hover:border-[#E5B94C]/30"
+                  >
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#E5B94C]/10">
+                      <Icon className="h-6 w-6 text-[#E5B94C]" />
+                    </div>
+                    <h3 className="mb-2 text-lg font-bold text-white">
+                      {tech.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-gray-400">
+                      {tech.desc}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* -- Bottom CTA ------------------------------------------- */}
         <AnimatedSection className="bg-gradient-to-b from-[#111] to-[#0a0a0a] py-24">
           <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
             <motion.h2
