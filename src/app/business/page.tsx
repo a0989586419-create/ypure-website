@@ -245,7 +245,15 @@ function ROICalculator() {
               step={1}
               value={machineCount}
               onChange={(e) => setMachineCount(Number(e.target.value))}
-              className="roi-slider w-full max-w-md cursor-pointer"
+              className="w-full max-w-md cursor-pointer accent-[#E5B94C]"
+              style={{
+                WebkitAppearance: "none",
+                appearance: "none",
+                height: 6,
+                borderRadius: 3,
+                background: `linear-gradient(to right, #e5b94c 0%, #e5b94c ${((machineCount - 4) / 46) * 100}%, #333 ${((machineCount - 4) / 46) * 100}%, #333 100%)`,
+                outline: "none",
+              }}
             />
             <div className="mt-2 flex justify-between text-xs text-gray-500 max-w-md mx-auto">
               <span>4 台</span>
@@ -289,42 +297,6 @@ function ROICalculator() {
         </motion.div>
       </div>
 
-      {/* Slider custom styles */}
-      <style jsx>{`
-        .roi-slider {
-          -webkit-appearance: none;
-          appearance: none;
-          height: 6px;
-          border-radius: 3px;
-          background: linear-gradient(
-            to right,
-            #e5b94c 0%,
-            #e5b94c ${((machineCount - 4) / 46) * 100}%,
-            #333 ${((machineCount - 4) / 46) * 100}%,
-            #333 100%
-          );
-          outline: none;
-        }
-        .roi-slider::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          appearance: none;
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          background: #e5b94c;
-          cursor: pointer;
-          box-shadow: 0 0 12px rgba(229, 185, 76, 0.4);
-        }
-        .roi-slider::-moz-range-thumb {
-          width: 24px;
-          height: 24px;
-          border-radius: 50%;
-          background: #e5b94c;
-          cursor: pointer;
-          border: none;
-          box-shadow: 0 0 12px rgba(229, 185, 76, 0.4);
-        }
-      `}</style>
     </section>
   );
 }

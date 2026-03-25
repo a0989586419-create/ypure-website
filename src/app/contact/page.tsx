@@ -30,8 +30,8 @@ const contactInfo = [
   {
     icon: MessageCircle,
     title: "LINE 官方帳號",
-    value: "@ypure",
-    href: "https://line.me/R/ti/p/@ypure",
+    value: "@016kcwrh",
+    href: "https://line.me/R/ti/p/@016kcwrh",
   },
   {
     icon: Clock,
@@ -42,7 +42,7 @@ const contactInfo = [
 ];
 
 const socialLinks = [
-  { icon: MessageCircle, label: "LINE 官方帳號", href: "https://line.me/R/ti/p/@ypure" },
+  { icon: MessageCircle, label: "LINE 官方帳號", href: "https://line.me/R/ti/p/@016kcwrh" },
   { icon: ExternalLink, label: "Facebook", href: "#" },
   { icon: Camera, label: "Instagram", href: "#" },
 ];

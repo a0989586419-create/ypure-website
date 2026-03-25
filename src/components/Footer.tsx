@@ -89,7 +89,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="https://line.me/R/ti/p/@ypure"
+                  href="https://line.me/R/ti/p/@016kcwrh"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
