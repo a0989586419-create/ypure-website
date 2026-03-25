@@ -58,11 +58,11 @@ export default function HowItWorks() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 px-4 bg-white">
+    <section className="py-24 px-4 bg-[#111]">
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             簡單四步驟，輕鬆洗衣
           </h2>
           <div className="w-16 h-1 bg-[#E5B94C] mx-auto rounded-full" />
@@ -71,7 +71,7 @@ export default function HowItWorks() {
         {/* Steps */}
         <div ref={ref} className="relative">
           {/* Connecting line (desktop only) */}
-          <div className="hidden md:block absolute top-[60px] left-[12.5%] right-[12.5%] border-t-2 border-dashed border-[#3A3A8C]/20" />
+          <div className="hidden md:block absolute top-[60px] left-[12.5%] right-[12.5%] border-t-2 border-dashed border-[#E5B94C]/20" />
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
             {steps.map((step, i) => {
@@ -91,15 +91,15 @@ export default function HowItWorks() {
                   </div>
 
                   {/* Icon */}
-                  <div className="w-[72px] h-[72px] rounded-full bg-[#3A3A8C]/10 flex items-center justify-center mb-5">
-                    <Icon className="w-8 h-8 text-[#3A3A8C]" />
+                  <div className="w-[72px] h-[72px] rounded-full bg-[#E5B94C]/10 flex items-center justify-center mb-5">
+                    <Icon className="w-8 h-8 text-[#E5B94C]" />
                   </div>
 
                   {/* Text */}
-                  <h3 className="text-lg font-bold text-[#1a1a2e] mb-2">
+                  <h3 className="text-lg font-bold text-white mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-[#6b7280] text-sm leading-relaxed max-w-[200px]">
+                  <p className="text-gray-400 text-sm leading-relaxed max-w-[200px]">
                     {step.description}
                   </p>
                 </motion.div>

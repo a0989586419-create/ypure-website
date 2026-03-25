@@ -32,7 +32,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white shadow-md"
+          ? "bg-[#0a0a0a]/95 backdrop-blur-md shadow-lg shadow-black/20"
           : "bg-transparent"
       }`}
     >
@@ -50,7 +50,7 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-medium transition-all duration-300 hover:text-[#E5B94C] ${
-                  scrolled ? "text-gray-700" : "text-white"
+                  scrolled ? "text-gray-300" : "text-white"
                 }`}
               >
                 {link.label}
@@ -74,7 +74,7 @@ export default function Header() {
             <button
               type="button"
               className={`md:hidden transition-all duration-300 ${
-                scrolled ? "text-gray-700" : "text-white"
+                scrolled ? "text-gray-300" : "text-white"
               }`}
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "關閉選單" : "開啟選單"}
@@ -95,13 +95,13 @@ export default function Header() {
           mobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <nav className="bg-white px-4 pb-6 pt-2 shadow-lg">
+        <nav className="bg-[#0a0a0a] px-4 pb-6 pt-2 shadow-lg border-t border-white/5">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={closeMobileMenu}
-              className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-700 transition-all duration-300 hover:bg-gray-50 hover:text-[#E5B94C]"
+              className="block rounded-lg px-4 py-3 text-sm font-medium text-gray-300 transition-all duration-300 hover:bg-white/5 hover:text-[#E5B94C]"
             >
               {link.label}
             </Link>
@@ -111,7 +111,7 @@ export default function Header() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeMobileMenu}
-            className="mt-4 block rounded-full bg-[#E5B94C] px-6 py-3 text-center text-sm font-bold text-gray-900 transition-all duration-300 hover:bg-[#d4a83b]"
+            className="mt-4 block rounded-full bg-[#E5B94C] px-6 py-3 text-center text-sm font-bold text-[#0a0a0a] transition-all duration-300 hover:bg-[#F0D078]"
           >
             立即使用
           </a>

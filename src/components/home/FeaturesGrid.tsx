@@ -65,15 +65,15 @@ export default function FeaturesGrid() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 px-4 bg-[#F8F7F3]">
+    <section className="py-24 px-4 bg-[#0a0a0a]">
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#1a1a2e] mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             為什麼選擇雲管家？
           </h2>
           <div className="w-16 h-1 bg-[#E5B94C] mx-auto mb-6 rounded-full" />
-          <p className="text-[#6b7280] text-lg max-w-2xl mx-auto">
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             整合 IoT 物聯網與行動支付，打造全新自助洗衣體驗
           </p>
         </div>
@@ -89,15 +89,15 @@ export default function FeaturesGrid() {
                 variants={cardVariants}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
-                className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
+                className="bg-[#1a1a2e] rounded-2xl p-8 border border-white/5 hover:border-[#E5B94C]/30 transition-all duration-300"
               >
-                <div className="w-[60px] h-[60px] rounded-full bg-[#3A3A8C]/10 flex items-center justify-center mb-5">
-                  <Icon className="w-7 h-7 text-[#3A3A8C]" />
+                <div className="w-[60px] h-[60px] rounded-full bg-[#E5B94C]/10 flex items-center justify-center mb-5">
+                  <Icon className="w-7 h-7 text-[#E5B94C]" />
                 </div>
-                <h3 className="text-xl font-bold text-[#1a1a2e] mb-2">
+                <h3 className="text-xl font-bold text-white mb-2">
                   {feature.title}
                 </h3>
-                <p className="text-[#6b7280] leading-relaxed">
+                <p className="text-gray-400 leading-relaxed">
                   {feature.description}
                 </p>
               </motion.div>
