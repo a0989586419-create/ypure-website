@@ -17,9 +17,9 @@ export default function CTABanner() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="max-w-5xl mx-auto"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-0">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-center gap-12">
           {/* B2C - Left side */}
-          <div className="text-center md:text-left md:pr-12">
+          <div className="flex-1 text-center md:text-left">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
               開始使用雲管家
             </h3>
@@ -37,12 +37,10 @@ export default function CTABanner() {
           </div>
 
           {/* Divider */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-white/20" style={{ position: "relative", width: 0, margin: "0 auto" }}>
-            <div className="absolute left-0 top-0 bottom-0 w-px bg-white/20" />
-          </div>
+          <div className="hidden md:block w-px self-stretch bg-white/20" />
 
           {/* B2B - Right side */}
-          <div className="text-center md:text-left md:pl-12 md:border-l md:border-white/20">
+          <div className="flex-1 text-center md:text-left">
             <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
               成為合作夥伴
             </h3>
