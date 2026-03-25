@@ -10,7 +10,7 @@ const quickLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1a1a3e] text-white">
+    <footer className="bg-[#0a0a0a] text-white border-t border-white/5">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Column 1: Logo + Description */}

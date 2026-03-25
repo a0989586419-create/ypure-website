@@ -17,7 +17,7 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0d0d2b] via-[#1a1a3e] to-[#3A3A8C]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#111] to-[#0a0a0a]" />
 
       {/* Decorative animated orbs */}
       <div
@@ -27,7 +27,7 @@ export default function HeroSection() {
       <div
         className="absolute top-[50%] right-[10%] w-96 h-96 rounded-full opacity-10 blur-3xl"
         style={{
-          background: "radial-gradient(circle, #5252b0, transparent)",
+          background: "radial-gradient(circle, #E5B94C, transparent)",
           animation: "float 4s ease-in-out infinite 1s",
         }}
       />

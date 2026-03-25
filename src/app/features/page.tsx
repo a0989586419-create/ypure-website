@@ -174,7 +174,7 @@ export default function FeaturesPage() {
       <Header />
       <main className="overflow-hidden">
         {/* ── Hero ─────────────────────────────────────────────── */}
-        <section className="relative flex min-h-[50vh] items-center justify-center bg-gradient-to-b from-[#0a0a0a] to-[#1a1a3e]">
+        <section className="relative flex min-h-[50vh] items-center justify-center bg-gradient-to-b from-[#0a0a0a] to-[#111]">
           <div
             className="pointer-events-none absolute left-[10%] top-[30%] h-72 w-72 rounded-full opacity-10 blur-3xl"
             style={{ background: "radial-gradient(circle, #E5B94C, transparent)" }}
@@ -213,7 +213,7 @@ export default function FeaturesPage() {
         ))}
 
         {/* ── Bottom CTA ───────────────────────────────────────── */}
-        <AnimatedSection className="bg-gradient-to-b from-[#111] to-[#1a1a3e] py-24">
+        <AnimatedSection className="bg-gradient-to-b from-[#111] to-[#0a0a0a] py-24">
           <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
             <motion.h2
               variants={fadeUp}

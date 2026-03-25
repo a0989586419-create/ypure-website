@@ -9,7 +9,7 @@ export default function CTABanner() {
   const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-24 px-4 bg-gradient-to-b from-[#0d0d2b] via-[#1a1a3e] to-[#3A3A8C]">
+    <section className="py-24 px-4 bg-gradient-to-b from-[#0a0a0a] via-[#111] to-[#0a0a0a]">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 30 }}

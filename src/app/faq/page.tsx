@@ -124,7 +124,7 @@ export default function FaqPage() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="relative pt-32 pb-20 bg-gradient-to-b from-[#0d0d2b] via-[#1a1a3e] to-[#0a0a0a]">
+        <section className="relative pt-32 pb-20 bg-gradient-to-b from-[#0a0a0a] via-[#111] to-[#0a0a0a]">
           <div className="max-w-4xl mx-auto text-center px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

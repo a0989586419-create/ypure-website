@@ -51,10 +51,10 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #0a0a0a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #3A3A8C;
+  background: #E5B94C;
   border-radius: 4px;
 }
 

@@ -120,7 +120,7 @@ export default function BusinessPage() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="relative flex min-h-[60vh] items-center justify-center bg-gradient-to-b from-[#0d0d2b] to-[#1a1a3e] pt-16">
+        <section className="relative flex min-h-[60vh] items-center justify-center bg-gradient-to-b from-[#0a0a0a] to-[#111] pt-16">
           <div className="mx-auto max-w-4xl px-4 py-24 text-center">
             <motion.h1
               {...fadeUp}
@@ -191,7 +191,7 @@ export default function BusinessPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.15 }}
-                    className="rounded-2xl border border-[#E5B94C]/20 bg-[#0d0d2b] p-6"
+                    className="rounded-2xl border border-[#E5B94C]/20 bg-[#0a0a0a] p-6"
                   >
                     <Icon className="mb-4 h-8 w-8 text-[#E5B94C]" />
                     <h3 className="mb-2 text-lg font-bold text-white">
@@ -314,7 +314,7 @@ export default function BusinessPage() {
         </section>
 
         {/* CTA */}
-        <section className="bg-gradient-to-b from-[#0d0d2b] to-[#1a1a3e] py-20">
+        <section className="bg-gradient-to-b from-[#0a0a0a] to-[#111] py-20">
           <div className="mx-auto max-w-4xl px-4 text-center">
             <motion.h2
               {...fadeUp}

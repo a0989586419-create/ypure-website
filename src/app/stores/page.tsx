@@ -76,7 +76,7 @@ export default function StoresPage() {
       <Header />
       <main>
         {/* Hero */}
-        <section className="relative pt-32 pb-20 bg-gradient-to-b from-[#0d0d2b] via-[#1a1a3e] to-[#0a0a0a]">
+        <section className="relative pt-32 pb-20 bg-gradient-to-b from-[#0a0a0a] via-[#111] to-[#0a0a0a]">
           <div className="max-w-4xl mx-auto text-center px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -334,7 +334,7 @@ export default function StoresPage() {
         </section>
 
         {/* Join CTA */}
-        <section className="py-20 bg-gradient-to-b from-[#0a0a0a] via-[#1a1a3e] to-[#0d0d2b] px-4">
+        <section className="py-20 bg-gradient-to-b from-[#0a0a0a] via-[#111] to-[#0a0a0a] px-4">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-white mb-4">
               想讓您的店加入雲管家？
