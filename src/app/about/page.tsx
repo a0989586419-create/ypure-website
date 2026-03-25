@@ -267,11 +267,11 @@ export default function AboutPage() {
                   key={v.title}
                   variants={fadeUp}
                   custom={i + 1}
-                  className="group rounded-2xl border-t-2 border-[#E5B94C] bg-[#0a0a0a] p-8 transition-shadow duration-300 hover:shadow-[0_0_30px_rgba(229,185,76,0.15)]"
+                  className="group rounded-2xl border-t-2 border-[#E5B94C] bg-white shadow-lg p-8 transition-shadow duration-300 hover:shadow-xl"
                 >
                   <div className="mb-4">{v.icon}</div>
-                  <h3 className="mb-2 text-xl font-bold text-white">{v.title}</h3>
-                  <p className="text-sm leading-relaxed text-gray-400">{v.desc}</p>
+                  <h3 className="mb-2 text-xl font-bold text-gray-900">{v.title}</h3>
+                  <p className="text-sm leading-relaxed text-gray-600">{v.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -329,10 +329,10 @@ export default function AboutPage() {
                   key={tech.name}
                   variants={fadeUp}
                   custom={i + 1}
-                  className="rounded-2xl border border-white/5 bg-[#0a0a0a] p-6 text-center transition-colors duration-300 hover:border-[#E5B94C]/30"
+                  className="rounded-2xl border border-gray-200 bg-white shadow-lg p-6 text-center transition-all duration-300 hover:shadow-xl"
                 >
-                  <p className="text-lg font-bold text-white">{tech.name}</p>
-                  <p className="mt-2 text-xs uppercase tracking-wider text-[#E5B94C]">
+                  <p className="text-lg font-bold text-gray-900">{tech.name}</p>
+                  <p className="mt-2 text-xs uppercase tracking-wider text-[#3A3A8C]">
                     {tech.category}
                   </p>
                 </motion.div>
