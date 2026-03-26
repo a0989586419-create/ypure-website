@@ -19,41 +19,42 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://cloudmonster.tw"),
-  title: "Cloud Monster | Smart Self-Service Laundry Management System",
+  title: "雲管家 Cloud Monster | 智慧自助洗衣管理系統",
   description:
-    "Cloud Monster -- IoT smart laundry solution. LINE Pay mobile payment, real-time machine monitoring, cloud management dashboard for effortless self-service laundry operation.",
+    "雲管家 Cloud Monster — IoT 智慧洗衣解決方案。LINE Pay 行動支付、即時機台監控、雲端管理後台，讓自助洗衣經營更輕鬆。",
   keywords: [
-    "self-service laundry",
-    "smart laundry",
+    "自助洗衣",
+    "智慧洗衣",
     "LINE Pay",
     "IoT",
+    "雲管家",
     "Cloud Monster",
-    "laundry management system",
-    "cloud management",
-    "mobile payment",
-    "machine monitoring",
+    "洗衣管理系統",
+    "雲端管理",
+    "行動支付",
+    "機台監控",
   ],
   openGraph: {
-    title: "Cloud Monster | Smart Self-Service Laundry Management System",
+    title: "雲管家 Cloud Monster | 智慧自助洗衣管理系統",
     description:
-      "IoT smart laundry solution -- LINE Pay payment, real-time monitoring, cloud management",
+      "IoT 智慧洗衣解決方案 — LINE Pay 行動支付、即時機台監控、雲端管理後台",
     type: "website",
     locale: "zh_TW",
-    siteName: "Cloud Monster",
+    siteName: "雲管家 Cloud Monster",
     images: [
       {
         url: "/cloudmonster-logo.png",
         width: 200,
         height: 109,
-        alt: "Cloud Monster Logo",
+        alt: "雲管家 Cloud Monster Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cloud Monster | Smart Self-Service Laundry Management System",
+    title: "雲管家 Cloud Monster | 智慧自助洗衣管理系統",
     description:
-      "IoT smart laundry solution -- LINE Pay payment, real-time monitoring, cloud management",
+      "IoT 智慧洗衣解決方案 — LINE Pay 行動支付、即時機台監控、雲端管理後台",
     images: ["/cloudmonster-logo.png"],
   },
   robots: {

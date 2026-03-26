@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
@@ -171,64 +171,6 @@ const techAdvantages = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Feature row component (kept for reference, not rendered)           */
-/* ------------------------------------------------------------------ */
-
-function FeatureRow({ feature, index }: { feature: Feature; index: number }) {
-  const isEven = index % 2 === 0; // text left, phone right
-  const bg = isEven ? "bg-[#0a0a0a]" : "bg-[#111]";
-
-  const textBlock = (
-    <motion.div variants={fadeUp} custom={1} className="flex-1">
-      <h3 className="mb-4 text-2xl font-bold text-[#E5B94C] sm:text-3xl">
-        {feature.title}
-      </h3>
-      <p className="mb-6 leading-relaxed text-gray-300">{feature.description}</p>
-      <ul className="space-y-3">
-        {feature.bullets.map((b) => (
-          <li key={b} className="flex items-start gap-3 text-sm text-gray-300">
-            <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#E5B94C]" />
-            <span>{b}</span>
-          </li>
-        ))}
-      </ul>
-    </motion.div>
-  );
-
-  const phoneBlock = (
-    <motion.div
-      variants={fadeUp}
-      custom={2}
-      className="flex flex-1 items-center justify-center"
-    >
-      {/* Glow container */}
-      <div className="relative">
-        <div className="absolute inset-0 -m-8 rounded-full bg-[#E5B94C]/5 blur-2xl" />
-        <MockupPhone variant={feature.phoneVariant} />
-      </div>
-    </motion.div>
-  );
-
-  return (
-    <AnimatedSection className={`${bg} py-20 sm:py-28`}>
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 sm:px-6 lg:flex-row lg:gap-20 lg:px-8">
-        {isEven ? (
-          <>
-            {textBlock}
-            {phoneBlock}
-          </>
-        ) : (
-          <>
-            {phoneBlock}
-            {textBlock}
-          </>
-        )}
-      </div>
-    </AnimatedSection>
-  );
-}
-
-/* ------------------------------------------------------------------ */
 /*  Interactive Features component                                     */
 /* ------------------------------------------------------------------ */
 
@@ -295,51 +237,53 @@ function InteractiveFeatures() {
 /*  Metric Ring SVG                                                    */
 /* ------------------------------------------------------------------ */
 
-function MetricRing() {
-  return (
-    <svg
-      className="absolute inset-0 h-full w-full"
-      viewBox="0 0 120 120"
-      fill="none"
+const MetricRingSvg = (
+  <svg
+    className="absolute inset-0 h-full w-full"
+    viewBox="0 0 120 120"
+    fill="none"
+  >
+    <circle
+      cx="60"
+      cy="60"
+      r="54"
+      stroke="#E5B94C"
+      strokeWidth="1"
+      strokeDasharray="8 6"
+      opacity="0.2"
     >
-      <circle
-        cx="60"
-        cy="60"
-        r="54"
-        stroke="#E5B94C"
-        strokeWidth="1"
-        strokeDasharray="8 6"
-        opacity="0.2"
-      >
-        <animateTransform
-          attributeName="transform"
-          type="rotate"
-          from="0 60 60"
-          to="360 60 60"
-          dur="30s"
-          repeatCount="indefinite"
-        />
-      </circle>
-      <circle
-        cx="60"
-        cy="60"
-        r="46"
-        stroke="#E5B94C"
-        strokeWidth="0.5"
-        strokeDasharray="4 8"
-        opacity="0.1"
-      >
-        <animateTransform
-          attributeName="transform"
-          type="rotate"
-          from="360 60 60"
-          to="0 60 60"
-          dur="20s"
-          repeatCount="indefinite"
-        />
-      </circle>
-    </svg>
-  );
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        from="0 60 60"
+        to="360 60 60"
+        dur="30s"
+        repeatCount="indefinite"
+      />
+    </circle>
+    <circle
+      cx="60"
+      cy="60"
+      r="46"
+      stroke="#E5B94C"
+      strokeWidth="0.5"
+      strokeDasharray="4 8"
+      opacity="0.1"
+    >
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        from="360 60 60"
+        to="0 60 60"
+        dur="20s"
+        repeatCount="indefinite"
+      />
+    </circle>
+  </svg>
+);
+
+function useMetricRing() {
+  return useMemo(() => MetricRingSvg, []);
 }
 
 /* ------------------------------------------------------------------ */
@@ -347,6 +291,7 @@ function MetricRing() {
 /* ------------------------------------------------------------------ */
 
 export default function FeaturesPage() {
+  const metricRing = useMetricRing();
   return (
     <>
       <Header />
@@ -487,7 +432,7 @@ export default function FeaturesPage() {
                 >
                   {/* Decorative ring */}
                   <div className="pointer-events-none absolute inset-4">
-                    <MetricRing />
+                    {metricRing}
                   </div>
 
                   <div className="relative z-10">

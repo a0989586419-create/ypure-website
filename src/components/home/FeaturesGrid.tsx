@@ -103,6 +103,10 @@ export default function FeaturesGrid() {
                 variants={cardVariants}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
+                tabIndex={0}
+                role="button"
+                aria-label={`${feature.title}: ${feature.description}`}
+                className="focus-visible:outline-2 focus-visible:outline-[#E5B94C] focus-visible:outline-offset-2 rounded-2xl"
               >
                 <div className="card-flip">
                   <div className="card-flip-inner">

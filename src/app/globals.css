@@ -56,6 +56,13 @@ body {
 }
 
 /* ========== Custom Scrollbar ========== */
+/* Firefox */
+html {
+  scrollbar-color: #E5B94C #1a1a2e;
+  scrollbar-width: thin;
+}
+
+/* Webkit (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -65,6 +72,33 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #E5B94C;
   border-radius: 4px;
+}
+
+/* ========== Focus Visible ========== */
+*:focus-visible {
+  outline: 2px solid #E5B94C;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ========== Fluid Typography ========== */
+.text-fluid-sm {
+  font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
+}
+.text-fluid-base {
+  font-size: clamp(1rem, 0.9rem + 0.35vw, 1.125rem);
+}
+.text-fluid-lg {
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.5rem);
+}
+.text-fluid-xl {
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2.25rem);
+}
+.text-fluid-2xl {
+  font-size: clamp(2rem, 1.5rem + 1.5vw, 3rem);
+}
+.text-fluid-3xl {
+  font-size: clamp(2.5rem, 1.8rem + 2vw, 4rem);
 }
 
 /* ========== Animation Keyframes ========== */

@@ -43,8 +43,8 @@ const contactInfo = [
 
 const socialLinks = [
   { icon: MessageCircle, label: "LINE 官方帳號", href: "https://line.me/R/ti/p/@016kcwrh" },
-  { icon: ExternalLink, label: "Facebook", href: "#" },
-  { icon: Camera, label: "Instagram", href: "#" },
+  { icon: ExternalLink, label: "Facebook", href: "https://www.facebook.com/profile.php?id=61574187498498" },
+  { icon: Camera, label: "Instagram", href: "https://www.instagram.com/cloudmonster.tw/" },
 ];
 
 export default function ContactPage() {
@@ -56,14 +56,26 @@ export default function ContactPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setFormData({ name: "", email: "", phone: "", category: "", message: "" });
-    setTimeout(() => setSubmitted(false), 5000);
+    setLoading(true);
+    setError("");
+    try {
+      // Simulate API call (replace with real endpoint when available)
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      setSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", category: "", message: "" });
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch {
+      setError("訊息傳送失敗，請稍後再試或透過其他方式聯繫我們。");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (
@@ -143,6 +155,16 @@ export default function ContactPage() {
                       <span className="text-green-400">
                         訊息已送出！我們會儘快回覆您。
                       </span>
+                    </motion.div>
+                  )}
+
+                  {error && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex items-center gap-3 bg-red-500/10 border border-red-500/30 rounded-xl p-4 mb-6"
+                    >
+                      <span className="text-red-400">{error}</span>
                     </motion.div>
                   )}
 
@@ -229,9 +251,10 @@ export default function ContactPage() {
 
                     <button
                       type="submit"
-                      className="w-full bg-[#E5B94C] text-[#0a0a0a] font-bold rounded-full py-4 text-lg hover:bg-[#F0D078] transition-colors duration-300"
+                      disabled={loading}
+                      className="w-full bg-[#E5B94C] text-[#0a0a0a] font-bold rounded-full py-4 text-lg hover:bg-[#F0D078] transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      送出訊息
+                      {loading ? "傳送中..." : "送出訊息"}
                     </button>
                   </form>
                 </div>

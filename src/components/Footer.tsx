@@ -137,7 +137,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/profile.php?id=61574187498498"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
@@ -151,7 +151,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/cloudmonster.tw/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
@@ -204,29 +204,29 @@ export default function Footer() {
               &copy; 2025-2026 雲管家 Cloud Monster. All rights reserved.
             </p>
             <div className="flex items-center gap-4 text-sm text-gray-500">
-              <a
-                href="#"
+              <Link
+                href="/privacy"
                 className="relative transition-colors duration-300 hover:text-[#E5B94C] group"
               >
                 隱私權政策
                 <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#E5B94C] transition-all duration-300 group-hover:w-full" />
-              </a>
+              </Link>
               <span className="text-gray-700">|</span>
-              <a
-                href="#"
+              <Link
+                href="/terms"
                 className="relative transition-colors duration-300 hover:text-[#E5B94C] group"
               >
                 服務條款
                 <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#E5B94C] transition-all duration-300 group-hover:w-full" />
-              </a>
+              </Link>
               <span className="text-gray-700">|</span>
-              <a
-                href="#"
+              <Link
+                href="/cookies"
                 className="relative transition-colors duration-300 hover:text-[#E5B94C] group"
               >
                 Cookie 政策
                 <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#E5B94C] transition-all duration-300 group-hover:w-full" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
