@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import { Mail, Phone, MessageCircle, Camera, Send } from "lucide-react";
 
 const quickLinks = [
@@ -10,6 +12,19 @@ const quickLinks = [
   { href: "/business", label: "店家方案" },
   { href: "/stores", label: "服務據點" },
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -25,13 +40,25 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#0a0a0a] text-white border-t border-white/5">
+    <motion.footer
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+      variants={containerVariants}
+      className="bg-[#0a0a0a] text-white border-t border-white/5"
+    >
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Column 1: Logo + Description */}
-          <div>
+          <motion.div variants={itemVariants}>
             <Link href="/">
-              <img src="/cloudmonster-logo.png" alt="雲管家 Cloud Monster" className="mb-4 h-14" />
+              <Image
+                src="/cloudmonster-logo.png"
+                alt="雲管家 Cloud Monster"
+                width={160}
+                height={56}
+                className="mb-4 h-14 w-auto"
+              />
             </Link>
             <p className="mb-2 text-lg font-semibold text-gray-100">
               智慧自助洗衣管理系統
@@ -39,52 +66,59 @@ export default function Footer() {
             <p className="text-sm leading-relaxed text-gray-400">
               讓洗衣更簡單、經營更輕鬆
             </p>
-          </div>
+          </motion.div>
 
           {/* Column 2: Quick Links */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="mb-4 text-base font-bold text-white">快速連結</h3>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
+                    className="group relative inline-block text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
                   >
                     {link.label}
+                    <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#E5B94C] transition-all duration-300 group-hover:w-full" />
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Column 3: Contact */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="mb-4 text-base font-bold text-white">聯絡資訊</h3>
             <ul className="space-y-3">
               <li>
                 <a
                   href="mailto:contact@cloudmonster.com.tw"
-                  className="flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
+                  className="group relative flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
                 >
                   <Mail className="h-4 w-4 flex-shrink-0" />
-                  <span>contact@cloudmonster.com.tw</span>
+                  <span className="relative">
+                    contact@cloudmonster.com.tw
+                    <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#E5B94C] transition-all duration-300 group-hover:w-full" />
+                  </span>
                 </a>
               </li>
               <li>
                 <a
                   href="tel:0800018888"
-                  className="flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
+                  className="group relative flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
                 >
                   <Phone className="h-4 w-4 flex-shrink-0" />
-                  <span>0800-018-888</span>
+                  <span className="relative">
+                    0800-018-888
+                    <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#E5B94C] transition-all duration-300 group-hover:w-full" />
+                  </span>
                 </a>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Column 4: Social + Newsletter */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="mb-4 text-base font-bold text-white">關注我們</h3>
             <ul className="space-y-3">
               <li>
@@ -92,10 +126,13 @@ export default function Footer() {
                   href="https://line.me/R/ti/p/@016kcwrh"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
+                  className="group relative flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
                 >
                   <MessageCircle className="h-4 w-4 flex-shrink-0" />
-                  <span>LINE 官方帳號</span>
+                  <span className="relative">
+                    LINE 官方帳號
+                    <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#E5B94C] transition-all duration-300 group-hover:w-full" />
+                  </span>
                 </a>
               </li>
               <li>
@@ -103,10 +140,13 @@ export default function Footer() {
                   href="https://facebook.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
+                  className="group relative flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
                 >
                   <MessageCircle className="h-4 w-4 flex-shrink-0" />
-                  <span>Facebook</span>
+                  <span className="relative">
+                    Facebook
+                    <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#E5B94C] transition-all duration-300 group-hover:w-full" />
+                  </span>
                 </a>
               </li>
               <li>
@@ -114,10 +154,13 @@ export default function Footer() {
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
+                  className="group relative flex items-center gap-2 text-sm text-gray-300 transition-all duration-300 hover:text-[#E5B94C]"
                 >
                   <Camera className="h-4 w-4 flex-shrink-0" />
-                  <span>Instagram</span>
+                  <span className="relative">
+                    Instagram
+                    <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#E5B94C] transition-all duration-300 group-hover:w-full" />
+                  </span>
                 </a>
               </li>
             </ul>
@@ -149,7 +192,7 @@ export default function Footer() {
                 </p>
               )}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -163,28 +206,31 @@ export default function Footer() {
             <div className="flex items-center gap-4 text-sm text-gray-500">
               <a
                 href="#"
-                className="transition-colors duration-300 hover:text-[#E5B94C]"
+                className="relative transition-colors duration-300 hover:text-[#E5B94C] group"
               >
                 隱私權政策
+                <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#E5B94C] transition-all duration-300 group-hover:w-full" />
               </a>
               <span className="text-gray-700">|</span>
               <a
                 href="#"
-                className="transition-colors duration-300 hover:text-[#E5B94C]"
+                className="relative transition-colors duration-300 hover:text-[#E5B94C] group"
               >
                 服務條款
+                <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#E5B94C] transition-all duration-300 group-hover:w-full" />
               </a>
               <span className="text-gray-700">|</span>
               <a
                 href="#"
-                className="transition-colors duration-300 hover:text-[#E5B94C]"
+                className="relative transition-colors duration-300 hover:text-[#E5B94C] group"
               >
                 Cookie 政策
+                <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-[#E5B94C] transition-all duration-300 group-hover:w-full" />
               </a>
             </div>
           </div>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }

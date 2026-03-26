@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 
@@ -13,34 +14,73 @@ const fadeUp = {
   }),
 };
 
+const statStagger = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.6,
+    },
+  },
+};
+
+const statItem = {
+  hidden: { opacity: 0, y: 20, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
+};
+
 export default function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax: particles move slower, orbs move faster
+  const particleY = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const orbY = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  const orbScale = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#111] to-[#0a0a0a]" />
 
-      {/* Decorative animated orbs */}
-      <div
+      {/* Decorative animated orbs with parallax */}
+      <motion.div
         className="absolute top-[10%] left-[15%] w-72 h-72 rounded-full opacity-10 blur-3xl animate-float"
-        style={{ background: "radial-gradient(circle, #E5B94C, transparent)" }}
+        style={{
+          background: "radial-gradient(circle, #E5B94C, transparent)",
+          y: orbY,
+          scale: orbScale,
+        }}
       />
-      <div
+      <motion.div
         className="absolute top-[50%] right-[10%] w-96 h-96 rounded-full opacity-10 blur-3xl"
         style={{
           background: "radial-gradient(circle, #E5B94C, transparent)",
           animation: "float 4s ease-in-out infinite 1s",
+          y: orbY,
+          scale: orbScale,
         }}
       />
-      <div
+      <motion.div
         className="absolute bottom-[15%] left-[30%] w-64 h-64 rounded-full opacity-10 blur-3xl"
         style={{
           background: "radial-gradient(circle, #E5B94C, transparent)",
           animation: "float 5s ease-in-out infinite 0.5s",
+          y: orbY,
+          scale: orbScale,
         }}
       />
 
-      {/* Particle field - deterministic positions to avoid hydration mismatch */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Particle field with parallax */}
+      <motion.div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ y: particleY }}>
         {[
           [12,8,0.3,4.2,0.5],[85,15,0.4,5.1,1.2],[45,72,0.2,3.8,2.1],[23,55,0.5,6.3,0.3],
           [67,33,0.15,4.7,3.5],[91,68,0.35,5.5,1.8],[8,42,0.25,3.2,4.2],[54,88,0.4,6.1,0.8],
@@ -63,11 +103,11 @@ export default function HeroSection() {
             }}
           />
         ))}
-      </div>
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        {/* Badge */}
+        {/* Badge with pulse animation */}
         <motion.div
           custom={0}
           variants={fadeUp}
@@ -75,9 +115,19 @@ export default function HeroSection() {
           animate="visible"
           className="inline-block mb-8"
         >
-          <span className="border border-[#E5B94C] text-[#E5B94C] text-sm px-6 py-2 rounded-full tracking-wider">
+          <motion.span
+            className="inline-block border border-[#E5B94C] text-[#E5B94C] text-sm px-6 py-2 rounded-full tracking-wider"
+            animate={{
+              boxShadow: [
+                "0 0 0 0 rgba(229, 185, 76, 0)",
+                "0 0 0 8px rgba(229, 185, 76, 0.15)",
+                "0 0 0 0 rgba(229, 185, 76, 0)",
+              ],
+            }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+          >
             IoT 智慧洗衣解決方案
-          </span>
+          </motion.span>
         </motion.div>
 
         {/* Main heading */}
@@ -104,7 +154,7 @@ export default function HeroSection() {
           LINE Pay 行動支付 | 即時機台監控 | 智慧經營管理
         </motion.p>
 
-        {/* CTA buttons */}
+        {/* CTA buttons with hover/tap micro-interactions */}
         <motion.div
           custom={3}
           variants={fadeUp}
@@ -112,26 +162,29 @@ export default function HeroSection() {
           animate="visible"
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
-          <a
+          <motion.a
             href="https://liff.line.me/2009552592-xkDKSJ1Y"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-[#E5B94C] text-[#0d0d2b] font-bold rounded-full px-8 py-4 text-lg hover:bg-[#F0D078] transition-colors duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             立即使用
-          </a>
-          <Link
-            href="/business"
-            className="inline-block border-2 border-white text-white font-bold rounded-full px-8 py-4 text-lg hover:bg-white/10 transition-colors duration-300"
-          >
-            店家合作
-          </Link>
+          </motion.a>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              href="/business"
+              className="inline-block border-2 border-white text-white font-bold rounded-full px-8 py-4 text-lg hover:bg-white/10 transition-colors duration-300"
+            >
+              店家合作
+            </Link>
+          </motion.div>
         </motion.div>
 
-        {/* Stats counter row */}
+        {/* Stats counter row with stagger */}
         <motion.div
-          custom={4}
-          variants={fadeUp}
+          variants={statStagger}
           initial="hidden"
           animate="visible"
           className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 mt-16"
@@ -143,10 +196,10 @@ export default function HeroSection() {
               { value: "1,000+", label: "活躍用戶" },
               { value: "99.9%", label: "系統穩定度" },
             ].map((stat) => (
-              <div key={stat.label} className="text-center">
+              <motion.div key={stat.label} variants={statItem} className="text-center">
                 <div className="text-3xl font-bold text-[#E5B94C]">{stat.value}</div>
                 <div className="text-white text-sm mt-1">{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </motion.div>

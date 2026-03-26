@@ -14,39 +14,48 @@
   --font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-@font-face {
-  font-family: 'Noto Sans TC';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosanstc/v36/-nFkOG829Oofr2wohFbTp9i9ywIvDt1T39Cx.woff2) format('woff2');
-}
-
-@font-face {
-  font-family: 'Noto Sans TC';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosanstc/v36/-nFkOG829Oofr2wohFbTp9i9ywIvDt1T39Cx.woff2) format('woff2');
-}
-
-@font-face {
-  font-family: 'Noto Sans TC';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/notosanstc/v36/-nFkOG829Oofr2wohFbTp9i9ywIvDt1T39Cx.woff2) format('woff2');
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-sans);
 }
 
-/* Custom scrollbar */
+/* ========== Utility Classes ========== */
+
+/* Glassmorphism - dark variant */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glassmorphism - white variant */
+.glass-white {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Gold glow effect */
+.gold-glow {
+  box-shadow: 0 0 20px rgba(229, 185, 76, 0.3);
+}
+
+/* Section divider - gradient line */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(229, 185, 76, 0.4) 50%,
+    transparent 100%
+  );
+}
+
+/* ========== Custom Scrollbar ========== */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -58,7 +67,7 @@ body {
   border-radius: 4px;
 }
 
-/* Animation keyframes */
+/* ========== Animation Keyframes ========== */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }

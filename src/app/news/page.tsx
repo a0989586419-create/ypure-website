@@ -101,10 +101,10 @@ export default function NewsPage() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-300 ${
+                  className={`relative rounded-full px-5 py-2 text-sm font-medium transition-all duration-300 ${
                     activeCategory === cat
-                      ? "bg-[#E5B94C] text-[#0a0a0a]"
-                      : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white"
+                      ? "bg-[#E5B94C] text-[#0a0a0a] shadow-lg shadow-[#E5B94C]/25 scale-105"
+                      : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white scale-100"
                   }`}
                 >
                   {cat}
@@ -132,7 +132,7 @@ export default function NewsPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
-                    className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:border-[#E5B94C]/30 hover:shadow-xl hover:-translate-y-1"
+                    className="group rounded-2xl border border-gray-200 bg-white p-6 shadow-md transition-all duration-300 hover:border-[#E5B94C]/30 hover:shadow-xl hover:-translate-y-1"
                   >
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
                       {/* Date Badge */}
@@ -156,10 +156,10 @@ export default function NewsPage() {
                             {item.category}
                           </span>
                         </div>
-                        <h2 className="mb-2 text-lg font-bold text-gray-900 group-hover:text-[#E5B94C] transition-colors duration-300">
+                        <h2 className="mb-2 text-xl font-bold text-gray-900 group-hover:text-[#E5B94C] transition-colors duration-300">
                           {item.title}
                         </h2>
-                        <p className="text-sm leading-relaxed text-gray-600">
+                        <p className="text-sm leading-relaxed text-gray-500">
                           {item.content}
                         </p>
                         <button className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-[#E5B94C] opacity-0 transition-all duration-300 group-hover:opacity-100">

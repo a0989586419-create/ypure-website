@@ -264,7 +264,7 @@ function ROICalculator() {
           {/* Result cards */}
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
             <div className="rounded-2xl bg-white shadow-lg p-6 text-center">
-              <p className="mb-2 text-sm text-gray-400">預估月營收</p>
+              <p className="mb-2 text-sm text-gray-500">預估月營收</p>
               <p className="text-3xl font-bold text-[#E5B94C]">
                 <motion.span
                   key={monthlyRevenue}
@@ -277,7 +277,7 @@ function ROICalculator() {
               </p>
             </div>
             <div className="rounded-2xl bg-white shadow-lg p-6 text-center">
-              <p className="mb-2 text-sm text-gray-400">每月節省人力成本</p>
+              <p className="mb-2 text-sm text-gray-500">每月節省人力成本</p>
               <p className="text-3xl font-bold text-[#E5B94C]">
                 <motion.span
                   key={monthlySaving}
@@ -290,7 +290,7 @@ function ROICalculator() {
               </p>
             </div>
             <div className="rounded-2xl bg-white shadow-lg p-6 text-center">
-              <p className="mb-2 text-sm text-gray-400">年投資報酬率</p>
+              <p className="mb-2 text-sm text-gray-500">年投資報酬率</p>
               <p className="text-3xl font-bold text-[#E5B94C]">320%</p>
             </div>
           </div>
@@ -473,7 +473,7 @@ export default function BusinessPage() {
                       {beforeItems.map((item) => (
                         <div
                           key={item}
-                          className="flex items-center gap-2 rounded-lg bg-white shadow-lg px-3 py-2 text-sm text-gray-400"
+                          className="flex items-center gap-2 rounded-lg bg-white shadow-lg px-3 py-2 text-sm text-gray-600"
                         >
                           <X className="h-3.5 w-3.5 flex-shrink-0 text-red-400" />
                           {item}
@@ -489,7 +489,7 @@ export default function BusinessPage() {
                       {afterItems.map((item) => (
                         <div
                           key={item}
-                          className="flex items-center gap-2 rounded-lg border border-[#E5B94C]/20 bg-white shadow-lg px-3 py-2 text-sm text-gray-200"
+                          className="flex items-center gap-2 rounded-lg border border-[#E5B94C]/20 bg-white shadow-lg px-3 py-2 text-sm text-gray-600"
                         >
                           <Check className="h-3.5 w-3.5 flex-shrink-0 text-green-400" />
                           {item}
@@ -612,20 +612,20 @@ export default function BusinessPage() {
                       </span>
                     </div>
                   )}
-                  <h3 className="mb-2 text-xl font-bold text-white">
+                  <h3 className="mb-2 text-xl font-bold text-gray-900">
                     {plan.name}
                   </h3>
                   <div className="mb-6">
                     <span className="text-3xl font-bold text-[#E5B94C]">
                       {plan.price}
                     </span>
-                    <span className="text-sm text-gray-400">{plan.period}</span>
+                    <span className="text-sm text-gray-500">{plan.period}</span>
                   </div>
                   <ul className="mb-8 space-y-3">
                     {plan.features.map((feat, j) => (
                       <li
                         key={j}
-                        className="flex items-center gap-2 text-sm text-gray-300"
+                        className="flex items-center gap-2 text-sm text-gray-600"
                       >
                         <Check className="h-4 w-4 flex-shrink-0 text-[#E5B94C]" />
                         {feat}
@@ -658,16 +658,16 @@ export default function BusinessPage() {
                 <table className="w-full min-w-[540px]">
                   <thead>
                     <tr className="bg-gray-50">
-                      <th className="px-6 py-4 text-left text-sm font-bold text-gray-400">
+                      <th className="px-6 py-4 text-left text-sm font-bold text-gray-700">
                         功能比較
                       </th>
-                      <th className="px-4 py-4 text-center text-sm font-bold text-gray-300">
+                      <th className="px-4 py-4 text-center text-sm font-bold text-gray-700">
                         基礎版
                       </th>
                       <th className="px-4 py-4 text-center text-sm font-bold text-[#E5B94C]">
                         專業版
                       </th>
-                      <th className="px-4 py-4 text-center text-sm font-bold text-gray-300">
+                      <th className="px-4 py-4 text-center text-sm font-bold text-gray-700">
                         企業版
                       </th>
                     </tr>
@@ -680,7 +680,7 @@ export default function BusinessPage() {
                           i % 2 === 0 ? "bg-white shadow-lg" : "bg-gray-50"
                         }
                       >
-                        <td className="px-6 py-3.5 text-sm text-gray-300">
+                        <td className="px-6 py-3.5 text-sm text-gray-700">
                           {row.feature}
                         </td>
                         <td className="px-4 py-3.5 text-center">

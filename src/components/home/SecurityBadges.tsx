@@ -3,13 +3,23 @@
 import { motion } from "framer-motion";
 import { Shield, CreditCard, Monitor, Lock } from "lucide-react";
 
-const fadeUp = {
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
+  visible: {
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.6, ease: "easeOut" as const },
-  }),
+    transition: { duration: 0.6, ease: "easeOut" as const },
+  },
 };
 
 const badges = [
@@ -52,28 +62,40 @@ export default function SecurityBadges() {
           <div className="w-16 h-1 bg-[#E5B94C] mx-auto rounded-full" />
         </motion.div>
 
-        <div className="grid md:grid-cols-4 gap-6">
-          {badges.map((badge, i) => {
+        <motion.div
+          className="grid md:grid-cols-4 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {badges.map((badge) => {
             const Icon = badge.icon;
             return (
               <motion.div
                 key={badge.title}
-                custom={i}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="bg-[#0a0a0a] rounded-2xl p-6 border border-white/5 text-center"
+                variants={cardVariants}
+                whileHover={{
+                  y: -4,
+                  borderColor: "rgba(229, 185, 76, 0.4)",
+                  boxShadow: "0 0 20px 0 rgba(229, 185, 76, 0.15)",
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="bg-[#0a0a0a] rounded-2xl p-6 border border-white/5 text-center cursor-default"
               >
-                <div className="w-12 h-12 rounded-full bg-[#E5B94C]/10 flex items-center justify-center mx-auto mb-4">
+                <motion.div
+                  className="w-12 h-12 rounded-full bg-[#E5B94C]/10 flex items-center justify-center mx-auto mb-4"
+                  whileHover={{ rotate: 10 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <Icon className="w-6 h-6 text-[#E5B94C]" />
-                </div>
+                </motion.div>
                 <h3 className="text-white font-bold mb-2">{badge.title}</h3>
                 <p className="text-gray-400 text-sm">{badge.desc}</p>
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -140,9 +140,15 @@ export default function TrustedBy() {
         <div className="w-16 h-1 bg-[#E5B94C] mx-auto rounded-full" />
       </div>
 
-      <div className="overflow-hidden">
+      {/* Marquee with hover:pause and gradient masks */}
+      <div className="relative overflow-hidden group">
+        {/* Left gradient mask */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#111] to-transparent z-10 pointer-events-none" />
+        {/* Right gradient mask */}
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#111] to-transparent z-10 pointer-events-none" />
+
         <div
-          className="flex items-center"
+          className="flex items-center group-hover:[animation-play-state:paused]"
           style={{
             animation: "marquee 30s linear infinite",
             width: "max-content",

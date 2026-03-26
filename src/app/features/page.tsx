@@ -248,10 +248,10 @@ function InteractiveFeatures() {
               <button
                 key={f.title}
                 onClick={() => setActiveIndex(i)}
-                className={`w-full text-left p-5 rounded-2xl transition-all duration-300 ${
+                className={`relative w-full text-left p-5 rounded-2xl transition-all duration-300 ${
                   i === activeIndex
-                    ? "bg-white shadow-lg border-l-4 border-[#E5B94C]"
-                    : "bg-transparent hover:bg-white/5 border-l-4 border-transparent"
+                    ? "bg-white shadow-lg border-l-4 border-[#E5B94C] scale-[1.02]"
+                    : "bg-transparent hover:bg-white/5 border-l-4 border-transparent scale-100"
                 }`}
               >
                 <h3 className={`font-bold mb-1 ${i === activeIndex ? "text-[#3A3A8C]" : "text-white"}`}>
@@ -276,10 +276,10 @@ function InteractiveFeatures() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeFeature.phoneVariant}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: -20 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
               >
                 <MockupPhone variant={activeFeature.phoneVariant} />
               </motion.div>

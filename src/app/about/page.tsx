@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { motion, useInView, useSpring, useMotionValue, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -59,9 +59,11 @@ function Counter({ target, suffix = "" }: { target: number; suffix?: string }) {
   const spring = useSpring(motionVal, { duration: 2000, bounce: 0 });
   const display = useTransform(spring, (v) => `${Math.round(v)}${suffix}`);
 
-  if (inView) {
-    motionVal.set(target);
-  }
+  useEffect(() => {
+    if (inView) {
+      motionVal.set(target);
+    }
+  }, [inView, motionVal, target]);
 
   return (
     <motion.span ref={ref} className="text-5xl font-bold text-[#E5B94C] sm:text-6xl">
@@ -109,16 +111,19 @@ const teamMembers = [
     name: "陳致遠",
     title: "創辦人暨執行長",
     bio: "深耕物聯網產業十年，曾任職於工業自動化領域。致力於將 IoT 技術應用於傳統產業轉型。",
+    skills: ["IoT", "產業轉型", "商業開發"],
   },
   {
     name: "林子翔",
     title: "技術長",
     bio: "全端工程師，專精 Node.js 與 React 開發。負責雲管家系統架構設計、LINE LIFF 與 MQTT 通訊整合。",
+    skills: ["React", "Node.js", "MQTT"],
   },
   {
     name: "王雅琪",
     title: "營運長",
     bio: "擁有連鎖零售業管理經驗，負責合作店家拓展、客戶成功與營運支援策略。",
+    skills: ["營運管理", "客戶成功", "商業開發"],
   },
 ];
 
@@ -306,6 +311,16 @@ export default function AboutPage() {
                   <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
                   <p className="mb-4 text-sm font-semibold text-[#3A3A8C]">{member.title}</p>
                   <p className="text-sm leading-relaxed text-gray-600">{member.bio}</p>
+                  <div className="mt-4 flex flex-wrap justify-center gap-2">
+                    {member.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="rounded-full bg-[#3A3A8C]/10 px-3 py-1 text-xs font-medium text-[#3A3A8C]"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </motion.div>
               ))}
             </div>

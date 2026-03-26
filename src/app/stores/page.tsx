@@ -137,7 +137,7 @@ export default function StoresPage() {
           <div className="max-w-6xl mx-auto">
             <div
               ref={gridRef}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-x-auto snap-x snap-mandatory md:overflow-visible md:flex-none pb-4 md:pb-0"
             >
               {stores.map((store, i) => (
                 <motion.div
@@ -146,7 +146,7 @@ export default function StoresPage() {
                   variants={fadeUp}
                   initial="hidden"
                   animate={gridInView ? "visible" : "hidden"}
-                  className="bg-white rounded-2xl p-6 border-l-4 border-[#E5B94C] shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="bg-white rounded-2xl p-6 border-l-4 border-[#E5B94C] shadow-lg hover:shadow-xl transition-all duration-300 min-w-[85vw] snap-center md:min-w-0"
                 >
                   <div className="mb-4 -mx-2 -mt-2">
                     <StoreFront variant={((i % 3) + 1) as 1 | 2 | 3} className="w-full h-24 opacity-30" />
@@ -175,7 +175,7 @@ export default function StoresPage() {
                       return (
                         <span
                           key={tag.label}
-                          className="inline-flex items-center gap-1 text-xs text-gray-300 bg-white/5 px-2.5 py-1 rounded-full"
+                          className="inline-flex items-center gap-1 text-xs text-gray-500 bg-gray-100 px-2.5 py-1 rounded-full"
                         >
                           <Icon className="w-3 h-3" />
                           {tag.label}
@@ -191,7 +191,7 @@ export default function StoresPage() {
                       return (
                         <span
                           key={amenity.label}
-                          className="inline-flex items-center gap-0.5 text-[10px] text-gray-500 bg-white/[0.03] px-2 py-0.5 rounded-full border border-white/5"
+                          className="inline-flex items-center gap-0.5 text-[10px] text-gray-500 bg-gray-50 px-2 py-0.5 rounded-full border border-gray-200"
                         >
                           <Icon className="w-2.5 h-2.5" />
                           {amenity.label}
@@ -202,7 +202,7 @@ export default function StoresPage() {
 
                   {/* Testimonial Quote */}
                   <div className="border-l-2 border-[#E5B94C]/50 pl-3 mb-5">
-                    <p className="text-sm italic text-gray-400">
+                    <p className="text-sm italic text-gray-500">
                       &ldquo;{store.quote}&rdquo;
                     </p>
                     <p className="mt-1 text-xs text-gray-500">
@@ -240,7 +240,7 @@ export default function StoresPage() {
                 {/* Simplified Taiwan map SVG */}
                 <svg
                   viewBox="0 0 200 500"
-                  className="w-48 md:w-56 mx-auto"
+                  className="w-64 md:w-72 mx-auto"
                   fill="none"
                 >
                   {/* Taiwan outline */}

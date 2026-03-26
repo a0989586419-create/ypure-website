@@ -44,13 +44,37 @@ const steps: Step[] = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
+
 const stepVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
+  hidden: { opacity: 0, y: 40 },
+  visible: {
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.2, duration: 0.5, ease: "easeOut" as const },
-  }),
+    transition: { duration: 0.6, ease: "easeOut" as const },
+  },
+};
+
+const numberBounce = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      type: "spring" as const,
+      stiffness: 300,
+      damping: 15,
+      delay: 0.1,
+    },
+  },
 };
 
 export default function HowItWorks() {
@@ -70,25 +94,35 @@ export default function HowItWorks() {
 
         {/* Steps */}
         <div ref={ref} className="relative">
-          {/* Connecting line (desktop only) */}
-          <div className="hidden md:block absolute top-[60px] left-[12.5%] right-[12.5%] border-t-2 border-dashed border-[#E5B94C]/20" />
+          {/* Connecting line with scaleX animation (desktop only) */}
+          <motion.div
+            className="hidden md:block absolute top-[60px] left-[12.5%] right-[12.5%] border-t-2 border-dashed border-[#E5B94C]/20 origin-left"
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={isInView ? { scaleX: 1, opacity: 1 } : { scaleX: 0, opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut", delay: 0.3 }}
+          />
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
-            {steps.map((step, i) => {
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
+            {steps.map((step) => {
               const Icon = step.icon;
               return (
                 <motion.div
                   key={step.number}
-                  custom={i}
                   variants={stepVariants}
-                  initial="hidden"
-                  animate={isInView ? "visible" : "hidden"}
                   className="flex flex-col items-center text-center relative"
                 >
-                  {/* Number circle */}
-                  <div className="w-[48px] h-[48px] rounded-full bg-[#E5B94C] flex items-center justify-center text-[#0d0d2b] font-bold text-lg mb-4 relative z-10">
+                  {/* Number circle with bounce */}
+                  <motion.div
+                    variants={numberBounce}
+                    className="w-[48px] h-[48px] rounded-full bg-[#E5B94C] flex items-center justify-center text-[#0d0d2b] font-bold text-lg mb-4 relative z-10"
+                  >
                     {step.number}
-                  </div>
+                  </motion.div>
 
                   {/* Icon */}
                   <div className="w-[72px] h-[72px] rounded-full bg-[#E5B94C]/10 flex items-center justify-center mb-5">
@@ -105,7 +139,7 @@ export default function HowItWorks() {
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

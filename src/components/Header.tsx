@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -48,7 +49,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#0a0a0a]/95 backdrop-blur-md shadow-lg shadow-black/20"
+          ? "bg-[#0a0a0a]/95 backdrop-blur-xl shadow-lg shadow-black/20 border-b border-[#E5B94C]/20"
           : "bg-transparent"
       }`}
     >
@@ -56,7 +57,14 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
-            <img src="/cloudmonster-logo.png" alt="雲管家 Cloud Monster" className="h-14" />
+            <Image
+              src="/cloudmonster-logo.png"
+              alt="雲管家 Cloud Monster"
+              width={160}
+              height={56}
+              priority
+              className="h-14 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -128,7 +136,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative pb-1 text-sm font-medium transition-all duration-300 hover:text-[#E5B94C] ${
+                  className={`relative pb-1 text-sm font-medium transition-all duration-300 hover:text-[#E5B94C] hover:drop-shadow-[0_0_6px_rgba(229,185,76,0.4)] ${
                     active
                       ? "text-[#E5B94C]"
                       : scrolled
@@ -154,14 +162,16 @@ export default function Header() {
           {/* Right side: CTA + Mobile menu button */}
           <div className="flex items-center gap-4">
             {/* CTA Button */}
-            <a
+            <motion.a
               href="https://liff.line.me/2009552592-xkDKSJ1Y"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden rounded-full bg-[#E5B94C] px-6 py-2 text-sm font-bold text-gray-900 transition-all duration-300 hover:bg-[#d4a83b] sm:inline-block"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="hidden rounded-full bg-[#E5B94C] px-6 py-2 text-sm font-bold text-gray-900 transition-all duration-300 hover:bg-[#d4a83b] hover:shadow-lg hover:shadow-[#E5B94C]/20 sm:inline-block"
             >
               立即使用
-            </a>
+            </motion.a>
 
             {/* Mobile Hamburger */}
             <button

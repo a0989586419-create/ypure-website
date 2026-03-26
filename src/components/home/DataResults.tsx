@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import {
   motion,
   useMotionValue,
@@ -25,16 +25,37 @@ const results: Result[] = [
   { value: 20, suffix: "hr", prefix: "-", label: "每月省下時間", icon: Clock },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
+};
+
 function AnimatedCounter({
   value,
   prefix,
   suffix,
   inView,
+  onComplete,
 }: {
   value: number;
   prefix: string;
   suffix: string;
   inView: boolean;
+  onComplete: () => void;
 }) {
   const motionValue = useMotionValue(0);
   const springValue = useSpring(motionValue, { stiffness: 80, damping: 20 });
@@ -43,13 +64,55 @@ function AnimatedCounter({
   useEffect(() => {
     if (inView) {
       motionValue.set(value);
+      // Trigger completion callback after spring settles
+      const timeout = setTimeout(onComplete, 1200);
+      return () => clearTimeout(timeout);
     }
-  }, [inView, value, motionValue]);
+  }, [inView, value, motionValue, onComplete]);
 
   return (
     <motion.span className="text-4xl md:text-5xl font-bold text-[#E5B94C]">
       {display}
     </motion.span>
+  );
+}
+
+function ResultCard({ result, inView }: { result: Result; inView: boolean }) {
+  const Icon = result.icon;
+  const [counted, setCounted] = useState(false);
+
+  return (
+    <motion.div
+      variants={cardVariants}
+      className="relative bg-white rounded-2xl p-8 text-center border border-gray-200 shadow-lg hover:border-[#E5B94C]/30 hover:shadow-xl transition-all duration-300"
+    >
+      {/* Icon with hover rotation */}
+      <motion.div
+        className="absolute top-4 right-4"
+        whileHover={{ rotate: 20, scale: 1.2 }}
+        transition={{ type: "spring", stiffness: 300 }}
+      >
+        <Icon className="w-5 h-5 text-gray-300" />
+      </motion.div>
+
+      {/* Animated number with scale bounce on completion */}
+      <motion.div
+        className="mb-3"
+        animate={counted ? { scale: [1, 1.15, 1] } : {}}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+      >
+        <AnimatedCounter
+          value={result.value}
+          prefix={result.prefix}
+          suffix={result.suffix}
+          inView={inView}
+          onComplete={() => setCounted(true)}
+        />
+      </motion.div>
+
+      {/* Label */}
+      <p className="text-gray-600 text-sm md:text-base">{result.label}</p>
+    </motion.div>
   );
 }
 
@@ -77,39 +140,18 @@ export default function DataResults() {
           </p>
         </div>
 
-        {/* Results grid */}
-        <div ref={ref} className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {results.map((result, i) => {
-            const Icon = result.icon;
-            return (
-              <motion.div
-                key={result.label}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ delay: i * 0.15, duration: 0.5 }}
-                className="relative bg-white rounded-2xl p-8 text-center border border-gray-200 shadow-lg hover:border-[#E5B94C]/30 hover:shadow-xl transition-all duration-300"
-              >
-                {/* Icon in top-right corner */}
-                <div className="absolute top-4 right-4">
-                  <Icon className="w-5 h-5 text-gray-300" />
-                </div>
-
-                {/* Animated number */}
-                <div className="mb-3">
-                  <AnimatedCounter
-                    value={result.value}
-                    prefix={result.prefix}
-                    suffix={result.suffix}
-                    inView={isInView}
-                  />
-                </div>
-
-                {/* Label */}
-                <p className="text-gray-600 text-sm md:text-base">{result.label}</p>
-              </motion.div>
-            );
-          })}
-        </div>
+        {/* Results grid with stagger */}
+        <motion.div
+          ref={ref}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          {results.map((result) => (
+            <ResultCard key={result.label} result={result} inView={isInView} />
+          ))}
+        </motion.div>
       </div>
     </section>
   );
