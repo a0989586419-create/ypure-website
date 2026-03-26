@@ -280,38 +280,38 @@ export default function StoresPage() {
                     {/* 新竹市 */}
                     <path d="M184,95L184,91L189,92L192,94L197,95L201,97L204,100L205,104L201,104L196,106L193,108L189,111L186,114L184,111L179,111L181,107L181,103L182,99Z" fill="#FDEDEC" fillOpacity={0.45} stroke="white" strokeWidth={0.8} />
 
-                    {/* Gold map pins for active store cities */}
+                    {/* Red map pins for active store cities */}
                     {/* 苗栗 pin */}
                     <g transform="translate(165, 122)">
-                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="#E5B94C" />
+                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="#DC2626" />
                       <circle cx="12" cy="12" r="5" fill="white" />
                     </g>
                     <text x="177" y="118" textAnchor="middle" fill="white" fontSize="13" fontWeight="bold" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.8)' }}>苗栗</text>
-                    <text x="177" y="158" textAnchor="middle" fill="#E5B94C" fontSize="10" fontWeight="600">2 店</text>
+                    <text x="177" y="158" textAnchor="middle" fill="#DC2626" fontSize="10" fontWeight="600">2 店</text>
 
                     {/* 台中 pin */}
                     <g transform="translate(150, 170)">
-                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="#E5B94C" />
+                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="#DC2626" />
                       <circle cx="12" cy="12" r="5" fill="white" />
                     </g>
                     <text x="162" y="166" textAnchor="middle" fill="white" fontSize="13" fontWeight="bold" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.8)' }}>台中</text>
-                    <text x="162" y="206" textAnchor="middle" fill="#E5B94C" fontSize="10" fontWeight="600">1 店</text>
+                    <text x="162" y="206" textAnchor="middle" fill="#DC2626" fontSize="10" fontWeight="600">1 店</text>
 
                     {/* 嘉義 pin */}
                     <g transform="translate(88, 295)">
-                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="#E5B94C" />
+                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="#DC2626" />
                       <circle cx="12" cy="12" r="5" fill="white" />
                     </g>
                     <text x="100" y="291" textAnchor="middle" fill="white" fontSize="13" fontWeight="bold" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.8)' }}>嘉義</text>
-                    <text x="100" y="331" textAnchor="middle" fill="#E5B94C" fontSize="10" fontWeight="600">1 店</text>
+                    <text x="100" y="331" textAnchor="middle" fill="#DC2626" fontSize="10" fontWeight="600">1 店</text>
 
                     {/* 高雄 pin */}
                     <g transform="translate(100, 390)">
-                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="#E5B94C" />
+                      <path d="M12 0C5.4 0 0 5.4 0 12c0 9 12 24 12 24s12-15 12-24C24 5.4 18.6 0 12 0z" fill="#DC2626" />
                       <circle cx="12" cy="12" r="5" fill="white" />
                     </g>
                     <text x="112" y="386" textAnchor="middle" fill="white" fontSize="13" fontWeight="bold" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.8)' }}>高雄</text>
-                    <text x="112" y="426" textAnchor="middle" fill="#E5B94C" fontSize="10" fontWeight="600">1 店</text>
+                    <text x="112" y="426" textAnchor="middle" fill="#DC2626" fontSize="10" fontWeight="600">1 店</text>
 
                     {/* Gray reference city markers */}
                     {/* 台北 */}
@@ -335,7 +335,7 @@ export default function StoresPage() {
                     <a href="https://maps.google.com/?q=苗栗市玉清路51號" target="_blank" rel="noopener noreferrer"
                       className="group bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:border-[#E5B94C]/40 hover:bg-white/[0.1] transition-all duration-300">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#E5B94C] animate-pulse" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
                         <span className="text-white font-bold text-sm">苗栗</span>
                         <span className="text-[#E5B94C] text-xs font-medium ml-auto">2 店</span>
                       </div>
@@ -346,7 +346,7 @@ export default function StoresPage() {
                     <a href="https://maps.google.com/?q=台中市西屯區福聯街22巷2號" target="_blank" rel="noopener noreferrer"
                       className="group bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:border-[#E5B94C]/40 hover:bg-white/[0.1] transition-all duration-300">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#E5B94C] animate-pulse" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
                         <span className="text-white font-bold text-sm">台中</span>
                         <span className="text-[#E5B94C] text-xs font-medium ml-auto">1 店</span>
                       </div>
@@ -357,7 +357,7 @@ export default function StoresPage() {
                     <a href="https://maps.google.com/?q=嘉義市東區文雅街181號" target="_blank" rel="noopener noreferrer"
                       className="group bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:border-[#E5B94C]/40 hover:bg-white/[0.1] transition-all duration-300">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#E5B94C] animate-pulse" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
                         <span className="text-white font-bold text-sm">嘉義</span>
                         <span className="text-[#E5B94C] text-xs font-medium ml-auto">1 店</span>
                       </div>
@@ -368,7 +368,7 @@ export default function StoresPage() {
                     <a href="https://maps.google.com/?q=高雄市鳳山區北平路214號" target="_blank" rel="noopener noreferrer"
                       className="group bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:border-[#E5B94C]/40 hover:bg-white/[0.1] transition-all duration-300">
                       <div className="flex items-center gap-2 mb-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#E5B94C] animate-pulse" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
                         <span className="text-white font-bold text-sm">高雄</span>
                         <span className="text-[#E5B94C] text-xs font-medium ml-auto">1 店</span>
                       </div>
