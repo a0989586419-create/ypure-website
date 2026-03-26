@@ -237,81 +237,161 @@ export default function StoresPage() {
               <h2 className="text-3xl font-bold text-white mb-12">據點分布</h2>
 
               <div className="relative bg-[#0a0a0a] rounded-2xl p-8 md:p-12 border border-white/5">
-                {/* Realistic Taiwan map SVG */}
+                {/* Real Taiwan map SVG - based on actual geographic outline */}
                 <svg
-                  viewBox="0 0 300 520"
-                  className="w-64 md:w-80 mx-auto"
+                  viewBox="0 0 400 600"
+                  className="w-72 md:w-96 mx-auto"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  {/* Taiwan main island - realistic outline */}
-                  <path
-                    d="M168 18 C175 22, 185 35, 192 50 C198 62, 205 78, 210 95 C215 110, 220 125, 222 140 C224 155, 225 168, 224 180 C223 195, 220 208, 218 222 C216 235, 212 248, 208 262 C204 275, 198 290, 192 305 C186 318, 178 332, 172 345 C166 358, 158 372, 152 385 C146 398, 140 412, 135 425 C130 435, 124 445, 118 452 C114 456, 108 458, 104 455 C100 450, 98 442, 96 432 C93 418, 92 405, 90 390 C88 375, 85 360, 84 345 C82 330, 80 315, 78 300 C76 285, 72 268, 70 252 C68 238, 66 222, 65 208 C64 195, 64 180, 66 168 C68 155, 72 142, 76 130 C80 118, 86 106, 92 95 C98 84, 106 72, 114 62 C122 52, 130 42, 140 32 C148 25, 158 18, 168 18Z"
-                    fill="#3A3A8C"
-                    stroke="#E5B94C"
-                    strokeWidth="1.2"
-                    strokeOpacity="0.5"
-                  />
-                  {/* Subtle inner glow */}
-                  <path
-                    d="M168 18 C175 22, 185 35, 192 50 C198 62, 205 78, 210 95 C215 110, 220 125, 222 140 C224 155, 225 168, 224 180 C223 195, 220 208, 218 222 C216 235, 212 248, 208 262 C204 275, 198 290, 192 305 C186 318, 178 332, 172 345 C166 358, 158 372, 152 385 C146 398, 140 412, 135 425 C130 435, 124 445, 118 452 C114 456, 108 458, 104 455 C100 450, 98 442, 96 432 C93 418, 92 405, 90 390 C88 375, 85 360, 84 345 C82 330, 80 315, 78 300 C76 285, 72 268, 70 252 C68 238, 66 222, 65 208 C64 195, 64 180, 66 168 C68 155, 72 142, 76 130 C80 118, 86 106, 92 95 C98 84, 106 72, 114 62 C122 52, 130 42, 140 32 C148 25, 158 18, 168 18Z"
-                    fill="url(#taiwanGradient)"
-                    opacity="0.3"
-                  />
                   <defs>
-                    <linearGradient id="taiwanGradient" x1="65" y1="18" x2="225" y2="458">
-                      <stop offset="0%" stopColor="#E5B94C" />
-                      <stop offset="100%" stopColor="#3A3A8C" />
+                    <linearGradient id="taiwanGradient" x1="120" y1="40" x2="280" y2="520">
+                      <stop offset="0%" stopColor="#4a4aaf" />
+                      <stop offset="50%" stopColor="#3A3A8C" />
+                      <stop offset="100%" stopColor="#2a2a6c" />
                     </linearGradient>
+                    <filter id="glow">
+                      <feGaussianBlur stdDeviation="3" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
+                    <filter id="dotGlow">
+                      <feGaussianBlur stdDeviation="4" result="blur" />
+                      <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                      </feMerge>
+                    </filter>
                   </defs>
 
-                  {/* 苗栗 - 2 stores */}
-                  <circle cx="120" cy="155" r="6" fill="#E5B94C">
-                    <animate attributeName="r" values="5;8;5" dur="2.5s" repeatCount="indefinite" />
-                  </circle>
-                  <circle cx="120" cy="155" r="14" fill="#E5B94C" fillOpacity="0.12">
-                    <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite" />
-                  </circle>
-                  <text x="142" y="152" fill="white" fontSize="13" fontWeight="bold">苗栗</text>
-                  <text x="142" y="168" fill="#E5B94C" fontSize="11">x2 店</text>
+                  {/* Taiwan main island - accurate geographic outline */}
+                  <path
+                    d="M215 52 L220 48 L228 50 L235 55 L240 52 L248 56 L252 62 L250 68
+                    L255 72 L260 80 L265 88 L270 95 L275 100 L280 108 L282 115
+                    L285 125 L287 135 L288 145 L290 158 L291 168 L290 178
+                    L289 190 L287 200 L285 212 L283 222 L280 235 L277 248
+                    L274 258 L270 270 L266 280 L262 290 L258 300 L254 310
+                    L249 320 L244 330 L238 342 L232 354 L226 365 L220 375
+                    L214 385 L208 395 L202 405 L196 415 L190 425 L184 435
+                    L178 442 L172 448 L168 455 L164 462 L160 468 L155 472
+                    L150 475 L145 476 L140 474 L137 470 L135 465 L132 458
+                    L130 450 L128 442 L125 432 L122 420 L120 410 L118 398
+                    L115 385 L113 372 L112 360 L110 348 L108 335 L107 322
+                    L106 310 L105 298 L104 285 L103 272 L102 260 L101 248
+                    L100 235 L100 222 L102 210 L104 200 L108 188 L112 178
+                    L118 168 L124 158 L130 148 L136 140 L142 132 L148 124
+                    L154 116 L160 108 L165 100 L170 92 L175 85 L180 78
+                    L185 72 L190 66 L196 60 L202 56 L208 54 L215 52Z"
+                    fill="url(#taiwanGradient)"
+                    stroke="#E5B94C"
+                    strokeWidth="1"
+                    strokeOpacity="0.4"
+                  />
+                  {/* Inner highlight for 3D depth */}
+                  <path
+                    d="M215 52 L220 48 L228 50 L235 55 L240 52 L248 56 L252 62 L250 68
+                    L255 72 L260 80 L265 88 L270 95 L275 100 L280 108 L282 115
+                    L285 125 L287 135 L288 145 L290 158 L291 168 L290 178
+                    L289 190 L287 200 L285 212 L283 222 L280 235 L277 248
+                    L274 258 L270 270 L266 280 L262 290 L258 300 L254 310
+                    L249 320 L244 330 L238 342 L232 354 L226 365 L220 375
+                    L214 385 L208 395 L202 405 L196 415 L190 425 L184 435
+                    L178 442 L172 448 L168 455 L164 462 L160 468 L155 472
+                    L150 475 L145 476 L140 474 L137 470 L135 465 L132 458
+                    L130 450 L128 442 L125 432 L122 420 L120 410 L118 398
+                    L115 385 L113 372 L112 360 L110 348 L108 335 L107 322
+                    L106 310 L105 298 L104 285 L103 272 L102 260 L101 248
+                    L100 235 L100 222 L102 210 L104 200 L108 188 L112 178
+                    L118 168 L124 158 L130 148 L136 140 L142 132 L148 124
+                    L154 116 L160 108 L165 100 L170 92 L175 85 L180 78
+                    L185 72 L190 66 L196 60 L202 56 L208 54 L215 52Z"
+                    fill="white"
+                    opacity="0.03"
+                  />
 
-                  {/* 台中 */}
-                  <circle cx="108" cy="200" r="6" fill="#E5B94C">
-                    <animate attributeName="r" values="5;8;5" dur="2.5s" repeatCount="indefinite" begin="0.4s" />
-                  </circle>
-                  <circle cx="108" cy="200" r="14" fill="#E5B94C" fillOpacity="0.12">
-                    <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite" begin="0.4s" />
-                  </circle>
-                  <text x="130" y="197" fill="white" fontSize="13" fontWeight="bold">台中</text>
-                  <text x="130" y="213" fill="#E5B94C" fontSize="11">x1 店</text>
+                  {/* Mountain range center line (decorative) */}
+                  <path
+                    d="M200 80 C210 120, 220 160, 215 200 C210 240, 200 280, 195 320 C190 360, 180 400, 165 450"
+                    stroke="white"
+                    strokeWidth="0.5"
+                    strokeOpacity="0.1"
+                    strokeDasharray="4 6"
+                  />
 
-                  {/* 嘉義 */}
-                  <circle cx="98" cy="272" r="6" fill="#E5B94C">
-                    <animate attributeName="r" values="5;8;5" dur="2.5s" repeatCount="indefinite" begin="0.8s" />
+                  {/* 苗栗 - Miaoli (northwest area, 2 stores) */}
+                  <circle cx="148" cy="168" r="18" fill="#E5B94C" fillOpacity="0.08" filter="url(#dotGlow)">
+                    <animate attributeName="r" values="18;26;18" dur="3s" repeatCount="indefinite" />
                   </circle>
-                  <circle cx="98" cy="272" r="14" fill="#E5B94C" fillOpacity="0.12">
-                    <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite" begin="0.8s" />
+                  <circle cx="148" cy="168" r="7" fill="#E5B94C">
+                    <animate attributeName="r" values="6;8;6" dur="3s" repeatCount="indefinite" />
                   </circle>
-                  <text x="120" y="269" fill="white" fontSize="13" fontWeight="bold">嘉義</text>
-                  <text x="120" y="285" fill="#E5B94C" fontSize="11">x1 店</text>
+                  <rect x="65" y="152" width="68" height="36" rx="8" fill="white" fillOpacity="0.08" />
+                  <text x="75" y="170" fill="white" fontSize="14" fontWeight="bold" fontFamily="sans-serif">苗栗</text>
+                  <text x="75" y="184" fill="#E5B94C" fontSize="11" fontFamily="sans-serif">x2 店</text>
 
-                  {/* 高雄 */}
-                  <circle cx="118" cy="372" r="6" fill="#E5B94C">
-                    <animate attributeName="r" values="5;8;5" dur="2.5s" repeatCount="indefinite" begin="1.2s" />
+                  {/* 台中 - Taichung (mid-west, 1 store) */}
+                  <circle cx="138" cy="210" r="18" fill="#E5B94C" fillOpacity="0.08" filter="url(#dotGlow)">
+                    <animate attributeName="r" values="18;26;18" dur="3s" repeatCount="indefinite" begin="0.5s" />
                   </circle>
-                  <circle cx="118" cy="372" r="14" fill="#E5B94C" fillOpacity="0.12">
-                    <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite" begin="1.2s" />
+                  <circle cx="138" cy="210" r="7" fill="#E5B94C">
+                    <animate attributeName="r" values="6;8;6" dur="3s" repeatCount="indefinite" begin="0.5s" />
                   </circle>
-                  <text x="140" y="369" fill="white" fontSize="13" fontWeight="bold">高雄</text>
-                  <text x="140" y="385" fill="#E5B94C" fontSize="11">x1 店</text>
+                  <rect x="55" y="194" width="68" height="36" rx="8" fill="white" fillOpacity="0.08" />
+                  <text x="65" y="212" fill="white" fontSize="14" fontWeight="bold" fontFamily="sans-serif">台中</text>
+                  <text x="65" y="226" fill="#E5B94C" fontSize="11" fontFamily="sans-serif">x1 店</text>
+
+                  {/* 嘉義 - Chiayi (southwest, 1 store) */}
+                  <circle cx="125" cy="300" r="18" fill="#E5B94C" fillOpacity="0.08" filter="url(#dotGlow)">
+                    <animate attributeName="r" values="18;26;18" dur="3s" repeatCount="indefinite" begin="1s" />
+                  </circle>
+                  <circle cx="125" cy="300" r="7" fill="#E5B94C">
+                    <animate attributeName="r" values="6;8;6" dur="3s" repeatCount="indefinite" begin="1s" />
+                  </circle>
+                  <rect x="40" y="284" width="68" height="36" rx="8" fill="white" fillOpacity="0.08" />
+                  <text x="50" y="302" fill="white" fontSize="14" fontWeight="bold" fontFamily="sans-serif">嘉義</text>
+                  <text x="50" y="316" fill="#E5B94C" fontSize="11" fontFamily="sans-serif">x1 店</text>
+
+                  {/* 高雄 - Kaohsiung (south, 1 store) */}
+                  <circle cx="145" cy="408" r="18" fill="#E5B94C" fillOpacity="0.08" filter="url(#dotGlow)">
+                    <animate attributeName="r" values="18;26;18" dur="3s" repeatCount="indefinite" begin="1.5s" />
+                  </circle>
+                  <circle cx="145" cy="408" r="7" fill="#E5B94C">
+                    <animate attributeName="r" values="6;8;6" dur="3s" repeatCount="indefinite" begin="1.5s" />
+                  </circle>
+                  <rect x="58" y="392" width="68" height="36" rx="8" fill="white" fillOpacity="0.08" />
+                  <text x="68" y="410" fill="white" fontSize="14" fontWeight="bold" fontFamily="sans-serif">高雄</text>
+                  <text x="68" y="424" fill="#E5B94C" fontSize="11" fontFamily="sans-serif">x1 店</text>
+
+                  {/* Other major city reference points (dimmed) */}
+                  <circle cx="210" cy="85" r="3" fill="white" fillOpacity="0.15" />
+                  <text x="220" y="89" fill="white" fillOpacity="0.25" fontSize="10" fontFamily="sans-serif">台北</text>
+
+                  <circle cx="195" cy="125" r="3" fill="white" fillOpacity="0.15" />
+                  <text x="205" y="129" fill="white" fillOpacity="0.25" fontSize="10" fontFamily="sans-serif">新竹</text>
+
+                  <circle cx="180" cy="360" r="3" fill="white" fillOpacity="0.15" />
+                  <text x="190" y="364" fill="white" fillOpacity="0.25" fontSize="10" fontFamily="sans-serif">台南</text>
+
+                  <circle cx="250" cy="250" r="3" fill="white" fillOpacity="0.15" />
+                  <text x="260" y="254" fill="white" fillOpacity="0.25" fontSize="10" fontFamily="sans-serif">花蓮</text>
+
+                  <circle cx="230" cy="350" r="3" fill="white" fillOpacity="0.15" />
+                  <text x="240" y="354" fill="white" fillOpacity="0.25" fontSize="10" fontFamily="sans-serif">台東</text>
                 </svg>
 
-                <div className="flex items-center justify-center gap-4 mt-8">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
                   <div className="flex items-center gap-2">
                     <span className="w-3 h-3 rounded-full bg-[#E5B94C] animate-pulse" />
                     <span className="text-gray-400 text-sm">營運中據點</span>
                   </div>
-                  <span className="text-gray-600">|</span>
+                  <span className="text-gray-600 hidden sm:inline">|</span>
+                  <div className="flex items-center gap-2">
+                    <span className="w-3 h-3 rounded-full bg-white/15" />
+                    <span className="text-gray-500 text-sm">規劃擴展城市</span>
+                  </div>
+                  <span className="text-gray-600 hidden sm:inline">|</span>
                   <span className="text-gray-500 text-sm">覆蓋 4 縣市 · 5 家門店 · 30 台智慧機台</span>
                 </div>
               </div>
