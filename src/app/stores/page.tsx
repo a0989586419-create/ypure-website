@@ -237,164 +237,83 @@ export default function StoresPage() {
               <h2 className="text-3xl font-bold text-white mb-12">據點分布</h2>
 
               <div className="relative bg-[#0a0a0a] rounded-2xl p-8 md:p-12 border border-white/5">
-                {/* Simplified Taiwan map SVG */}
+                {/* Realistic Taiwan map SVG */}
                 <svg
-                  viewBox="0 0 200 500"
-                  className="w-64 md:w-72 mx-auto"
+                  viewBox="0 0 300 520"
+                  className="w-64 md:w-80 mx-auto"
                   fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  {/* Taiwan outline */}
+                  {/* Taiwan main island - realistic outline */}
                   <path
-                    d="M100 30 C120 30, 155 80, 160 120 C165 160, 155 200, 150 240 C145 280, 130 320, 120 360 C110 400, 105 440, 100 470 C95 440, 85 400, 80 360 C70 320, 55 280, 50 240 C45 200, 40 160, 45 120 C50 80, 80 30, 100 30Z"
+                    d="M168 18 C175 22, 185 35, 192 50 C198 62, 205 78, 210 95 C215 110, 220 125, 222 140 C224 155, 225 168, 224 180 C223 195, 220 208, 218 222 C216 235, 212 248, 208 262 C204 275, 198 290, 192 305 C186 318, 178 332, 172 345 C166 358, 158 372, 152 385 C146 398, 140 412, 135 425 C130 435, 124 445, 118 452 C114 456, 108 458, 104 455 C100 450, 98 442, 96 432 C93 418, 92 405, 90 390 C88 375, 85 360, 84 345 C82 330, 80 315, 78 300 C76 285, 72 268, 70 252 C68 238, 66 222, 65 208 C64 195, 64 180, 66 168 C68 155, 72 142, 76 130 C80 118, 86 106, 92 95 C98 84, 106 72, 114 62 C122 52, 130 42, 140 32 C148 25, 158 18, 168 18Z"
                     fill="#3A3A8C"
                     stroke="#E5B94C"
-                    strokeWidth="1.5"
-                    strokeOpacity="0.4"
+                    strokeWidth="1.2"
+                    strokeOpacity="0.5"
                   />
+                  {/* Subtle inner glow */}
+                  <path
+                    d="M168 18 C175 22, 185 35, 192 50 C198 62, 205 78, 210 95 C215 110, 220 125, 222 140 C224 155, 225 168, 224 180 C223 195, 220 208, 218 222 C216 235, 212 248, 208 262 C204 275, 198 290, 192 305 C186 318, 178 332, 172 345 C166 358, 158 372, 152 385 C146 398, 140 412, 135 425 C130 435, 124 445, 118 452 C114 456, 108 458, 104 455 C100 450, 98 442, 96 432 C93 418, 92 405, 90 390 C88 375, 85 360, 84 345 C82 330, 80 315, 78 300 C76 285, 72 268, 70 252 C68 238, 66 222, 65 208 C64 195, 64 180, 66 168 C68 155, 72 142, 76 130 C80 118, 86 106, 92 95 C98 84, 106 72, 114 62 C122 52, 130 42, 140 32 C148 25, 158 18, 168 18Z"
+                    fill="url(#taiwanGradient)"
+                    opacity="0.3"
+                  />
+                  <defs>
+                    <linearGradient id="taiwanGradient" x1="65" y1="18" x2="225" y2="458">
+                      <stop offset="0%" stopColor="#E5B94C" />
+                      <stop offset="100%" stopColor="#3A3A8C" />
+                    </linearGradient>
+                  </defs>
 
-                  {/* City dots with labels */}
-                  {/* 苗栗 */}
-                  <circle cx="90" cy="165" r="6" fill="#E5B94C">
-                    <animate
-                      attributeName="r"
-                      values="5;7;5"
-                      dur="2s"
-                      repeatCount="indefinite"
-                    />
+                  {/* 苗栗 - 2 stores */}
+                  <circle cx="120" cy="155" r="6" fill="#E5B94C">
+                    <animate attributeName="r" values="5;8;5" dur="2.5s" repeatCount="indefinite" />
                   </circle>
-                  <circle
-                    cx="90"
-                    cy="165"
-                    r="12"
-                    fill="#E5B94C"
-                    fillOpacity="0.15"
-                  >
-                    <animate
-                      attributeName="r"
-                      values="12;18;12"
-                      dur="2s"
-                      repeatCount="indefinite"
-                    />
+                  <circle cx="120" cy="155" r="14" fill="#E5B94C" fillOpacity="0.12">
+                    <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite" />
                   </circle>
-                  <text
-                    x="110"
-                    y="170"
-                    fill="white"
-                    fontSize="12"
-                    fontWeight="bold"
-                  >
-                    苗栗 x2
-                  </text>
+                  <text x="142" y="152" fill="white" fontSize="13" fontWeight="bold">苗栗</text>
+                  <text x="142" y="168" fill="#E5B94C" fontSize="11">x2 店</text>
 
                   {/* 台中 */}
-                  <circle cx="85" cy="210" r="6" fill="#E5B94C">
-                    <animate
-                      attributeName="r"
-                      values="5;7;5"
-                      dur="2s"
-                      repeatCount="indefinite"
-                      begin="0.3s"
-                    />
+                  <circle cx="108" cy="200" r="6" fill="#E5B94C">
+                    <animate attributeName="r" values="5;8;5" dur="2.5s" repeatCount="indefinite" begin="0.4s" />
                   </circle>
-                  <circle
-                    cx="85"
-                    cy="210"
-                    r="12"
-                    fill="#E5B94C"
-                    fillOpacity="0.15"
-                  >
-                    <animate
-                      attributeName="r"
-                      values="12;18;12"
-                      dur="2s"
-                      repeatCount="indefinite"
-                      begin="0.3s"
-                    />
+                  <circle cx="108" cy="200" r="14" fill="#E5B94C" fillOpacity="0.12">
+                    <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite" begin="0.4s" />
                   </circle>
-                  <text
-                    x="105"
-                    y="215"
-                    fill="white"
-                    fontSize="12"
-                    fontWeight="bold"
-                  >
-                    台中
-                  </text>
+                  <text x="130" y="197" fill="white" fontSize="13" fontWeight="bold">台中</text>
+                  <text x="130" y="213" fill="#E5B94C" fontSize="11">x1 店</text>
 
                   {/* 嘉義 */}
-                  <circle cx="80" cy="275" r="6" fill="#E5B94C">
-                    <animate
-                      attributeName="r"
-                      values="5;7;5"
-                      dur="2s"
-                      repeatCount="indefinite"
-                      begin="0.6s"
-                    />
+                  <circle cx="98" cy="272" r="6" fill="#E5B94C">
+                    <animate attributeName="r" values="5;8;5" dur="2.5s" repeatCount="indefinite" begin="0.8s" />
                   </circle>
-                  <circle
-                    cx="80"
-                    cy="275"
-                    r="12"
-                    fill="#E5B94C"
-                    fillOpacity="0.15"
-                  >
-                    <animate
-                      attributeName="r"
-                      values="12;18;12"
-                      dur="2s"
-                      repeatCount="indefinite"
-                      begin="0.6s"
-                    />
+                  <circle cx="98" cy="272" r="14" fill="#E5B94C" fillOpacity="0.12">
+                    <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite" begin="0.8s" />
                   </circle>
-                  <text
-                    x="100"
-                    y="280"
-                    fill="white"
-                    fontSize="12"
-                    fontWeight="bold"
-                  >
-                    嘉義
-                  </text>
+                  <text x="120" y="269" fill="white" fontSize="13" fontWeight="bold">嘉義</text>
+                  <text x="120" y="285" fill="#E5B94C" fontSize="11">x1 店</text>
 
                   {/* 高雄 */}
-                  <circle cx="95" cy="370" r="6" fill="#E5B94C">
-                    <animate
-                      attributeName="r"
-                      values="5;7;5"
-                      dur="2s"
-                      repeatCount="indefinite"
-                      begin="0.9s"
-                    />
+                  <circle cx="118" cy="372" r="6" fill="#E5B94C">
+                    <animate attributeName="r" values="5;8;5" dur="2.5s" repeatCount="indefinite" begin="1.2s" />
                   </circle>
-                  <circle
-                    cx="95"
-                    cy="370"
-                    r="12"
-                    fill="#E5B94C"
-                    fillOpacity="0.15"
-                  >
-                    <animate
-                      attributeName="r"
-                      values="12;18;12"
-                      dur="2s"
-                      repeatCount="indefinite"
-                      begin="0.9s"
-                    />
+                  <circle cx="118" cy="372" r="14" fill="#E5B94C" fillOpacity="0.12">
+                    <animate attributeName="r" values="14;22;14" dur="2.5s" repeatCount="indefinite" begin="1.2s" />
                   </circle>
-                  <text
-                    x="115"
-                    y="375"
-                    fill="white"
-                    fontSize="12"
-                    fontWeight="bold"
-                  >
-                    高雄
-                  </text>
+                  <text x="140" y="369" fill="white" fontSize="13" fontWeight="bold">高雄</text>
+                  <text x="140" y="385" fill="#E5B94C" fontSize="11">x1 店</text>
                 </svg>
 
-                <p className="text-gray-500 text-sm mt-8">
-                  覆蓋嘉義、苗栗、台中、高雄四縣市
-                </p>
+                <div className="flex items-center justify-center gap-4 mt-8">
+                  <div className="flex items-center gap-2">
+                    <span className="w-3 h-3 rounded-full bg-[#E5B94C] animate-pulse" />
+                    <span className="text-gray-400 text-sm">營運中據點</span>
+                  </div>
+                  <span className="text-gray-600">|</span>
+                  <span className="text-gray-500 text-sm">覆蓋 4 縣市 · 5 家門店 · 30 台智慧機台</span>
+                </div>
               </div>
             </motion.div>
           </div>
