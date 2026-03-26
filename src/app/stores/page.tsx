@@ -236,154 +236,77 @@ export default function StoresPage() {
             >
               <h2 className="text-3xl font-bold text-white mb-12">據點分布</h2>
 
-              <div className="relative bg-[#0a0a0a] rounded-2xl p-8 md:p-12 border border-white/5">
-                {/* Taiwan map with geographically accurate outline + CSS overlay markers */}
-                <div className="relative w-64 md:w-80 mx-auto" style={{ aspectRatio: '300 / 830' }}>
-                  <svg
-                    viewBox="0 0 300 830"
-                    className="w-full h-full"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <defs>
-                      <linearGradient id="taiwanGrad" x1="80" y1="0" x2="220" y2="830">
-                        <stop offset="0%" stopColor="#4a4aaf" />
-                        <stop offset="50%" stopColor="#3A3A8C" />
-                        <stop offset="100%" stopColor="#2a2a6c" />
-                      </linearGradient>
-                      <filter id="mapGlow">
-                        <feGaussianBlur stdDeviation="2" result="blur" />
-                        <feMerge>
-                          <feMergeNode in="blur" />
-                          <feMergeNode in="SourceGraphic" />
-                        </feMerge>
-                      </filter>
-                    </defs>
-
-                    {/* Taiwan main island - derived from real geographic coordinates
-                        Lon 120.0-122.1 -> x 0-300, Lat 25.35-21.85 -> y 0-830 */}
-                    <path
-                      d="M216,12 L221,14 L226,16 L231,23 L240,35 L246,45 L251,52 L256,59 L260,70 L264,82 L269,94 L271,110 L269,124 L264,138 L260,152 L254,171 L246,194 L237,218 L231,241 L226,265 L221,288 L217,312 L211,335 L206,358 L200,382 L194,405 L189,429 L183,452 L174,476 L169,499 L160,527 L151,555 L143,579 L136,602 L129,626 L121,656 L114,679 L111,703 L109,726 L106,750 L103,773 L104,794 L109,804 L114,808 L121,804 L126,797 L123,773 L120,750 L117,726 L111,703 L104,686 L97,668 L86,644 L74,626 L60,602 L51,579 L46,555 L40,532 L34,508 L31,485 L29,462 L31,438 L40,415 L46,391 L51,368 L57,344 L63,321 L69,305 L74,281 L80,265 L86,241 L94,218 L100,194 L103,176 L106,157 L111,134 L117,117 L126,101 L136,87 L146,73 L157,63 L169,54 L177,45 L186,40 L194,30 L203,23 L211,16 Z"
-                      fill="url(#taiwanGrad)"
-                      stroke="#E5B94C"
-                      strokeWidth="1.2"
-                      strokeOpacity="0.35"
-                      filter="url(#mapGlow)"
-                    />
-                    {/* Subtle inner highlight for depth */}
-                    <path
-                      d="M216,12 L221,14 L226,16 L231,23 L240,35 L246,45 L251,52 L256,59 L260,70 L264,82 L269,94 L271,110 L269,124 L264,138 L260,152 L254,171 L246,194 L237,218 L231,241 L226,265 L221,288 L217,312 L211,335 L206,358 L200,382 L194,405 L189,429 L183,452 L174,476 L169,499 L160,527 L151,555 L143,579 L136,602 L129,626 L121,656 L114,679 L111,703 L109,726 L106,750 L103,773 L104,794 L109,804 L114,808 L121,804 L126,797 L123,773 L120,750 L117,726 L111,703 L104,686 L97,668 L86,644 L74,626 L60,602 L51,579 L46,555 L40,532 L34,508 L31,485 L29,462 L31,438 L40,415 L46,391 L51,368 L57,344 L63,321 L69,305 L74,281 L80,265 L86,241 L94,218 L100,194 L103,176 L106,157 L111,134 L117,117 L126,101 L136,87 L146,73 L157,63 L169,54 L177,45 L186,40 L194,30 L203,23 L211,16 Z"
-                      fill="white"
-                      opacity="0.03"
-                    />
-
-                    {/* Central mountain range (decorative) */}
-                    <path
-                      d="M200,60 C210,150 220,250 210,370 C200,480 180,580 130,720"
-                      stroke="white"
-                      strokeWidth="0.6"
-                      strokeOpacity="0.08"
-                      strokeDasharray="6 8"
-                    />
-                  </svg>
-
-                  {/* CSS Overlay Markers - positions from real lat/lon projection */}
-
-                  {/* === Active stores (gold pulsing markers) === */}
-
-                  {/* Miaoli - 2 stores (39%, 22.6%) */}
-                  <div className="absolute" style={{ top: '22%', left: '38%' }}>
-                    <div className="relative">
-                      <span className="absolute -inset-3 rounded-full bg-[#E5B94C]/10 animate-ping" />
-                      <span className="relative block w-4 h-4 rounded-full bg-[#E5B94C] shadow-[0_0_12px_rgba(229,185,76,0.6)]" />
-                    </div>
-                    <div className="absolute left-7 top-1/2 -translate-y-1/2 whitespace-nowrap bg-white/[0.08] backdrop-blur-sm rounded-lg px-3 py-1.5">
-                      <span className="block text-white text-sm font-bold leading-tight">苗栗</span>
-                      <span className="block text-[#E5B94C] text-xs">x2 店</span>
-                    </div>
-                  </div>
-
-                  {/* Taichung - 1 store (32.4%, 34.3%) */}
-                  <div className="absolute" style={{ top: '33%', left: '31%' }}>
-                    <div className="relative">
-                      <span className="absolute -inset-3 rounded-full bg-[#E5B94C]/10 animate-ping" style={{ animationDelay: '0.5s' }} />
-                      <span className="relative block w-4 h-4 rounded-full bg-[#E5B94C] shadow-[0_0_12px_rgba(229,185,76,0.6)]" />
-                    </div>
-                    <div className="absolute right-7 top-1/2 -translate-y-1/2 whitespace-nowrap bg-white/[0.08] backdrop-blur-sm rounded-lg px-3 py-1.5">
-                      <span className="block text-white text-sm font-bold leading-tight">台中</span>
-                      <span className="block text-[#E5B94C] text-xs">x1 店</span>
-                    </div>
-                  </div>
-
-                  {/* Chiayi - 1 store (21.4%, 53.4%) */}
-                  <div className="absolute" style={{ top: '52%', left: '20%' }}>
-                    <div className="relative">
-                      <span className="absolute -inset-3 rounded-full bg-[#E5B94C]/10 animate-ping" style={{ animationDelay: '1s' }} />
-                      <span className="relative block w-4 h-4 rounded-full bg-[#E5B94C] shadow-[0_0_12px_rgba(229,185,76,0.6)]" />
-                    </div>
-                    <div className="absolute right-7 top-1/2 -translate-y-1/2 whitespace-nowrap bg-white/[0.08] backdrop-blur-sm rounded-lg px-3 py-1.5">
-                      <span className="block text-white text-sm font-bold leading-tight">嘉義</span>
-                      <span className="block text-[#E5B94C] text-xs">x1 店</span>
-                    </div>
-                  </div>
-
-                  {/* Kaohsiung - 1 store (14.3%, 77.7%) */}
-                  <div className="absolute" style={{ top: '76%', left: '14%' }}>
-                    <div className="relative">
-                      <span className="absolute -inset-3 rounded-full bg-[#E5B94C]/10 animate-ping" style={{ animationDelay: '1.5s' }} />
-                      <span className="relative block w-4 h-4 rounded-full bg-[#E5B94C] shadow-[0_0_12px_rgba(229,185,76,0.6)]" />
-                    </div>
-                    <div className="absolute left-7 top-1/2 -translate-y-1/2 whitespace-nowrap bg-white/[0.08] backdrop-blur-sm rounded-lg px-3 py-1.5">
-                      <span className="block text-white text-sm font-bold leading-tight">高雄</span>
-                      <span className="block text-[#E5B94C] text-xs">x1 店</span>
-                    </div>
-                  </div>
-
-                  {/* === Reference cities (dimmed markers) === */}
-
-                  {/* Taipei (72.4%, 8.6%) */}
-                  <div className="absolute flex items-center gap-1.5" style={{ top: '8%', left: '71%' }}>
-                    <span className="block w-2.5 h-2.5 rounded-full bg-white/20" />
-                    <span className="text-white/30 text-[11px]">台北</span>
-                  </div>
-
-                  {/* Hsinchu (46.2%, 15.7%) */}
-                  <div className="absolute flex items-center gap-1.5" style={{ top: '15%', left: '45%' }}>
-                    <span className="block w-2.5 h-2.5 rounded-full bg-white/20" />
-                    <span className="text-white/30 text-[11px]">新竹</span>
-                  </div>
-
-                  {/* Tainan (9.5%, 67.1%) */}
-                  <div className="absolute flex items-center gap-1.5" style={{ top: '66%', left: '9%' }}>
-                    <span className="block w-2.5 h-2.5 rounded-full bg-white/20" />
-                    <span className="text-white/30 text-[11px]">台南</span>
-                  </div>
-
-                  {/* Hualien (76.2%, 38.9%) */}
-                  <div className="absolute flex items-center gap-1.5" style={{ top: '38%', left: '75%' }}>
-                    <span className="block w-2.5 h-2.5 rounded-full bg-white/20" />
-                    <span className="text-white/30 text-[11px]">花蓮</span>
-                  </div>
-
-                  {/* Taitung (54.8%, 74.3%) */}
-                  <div className="absolute flex items-center gap-1.5" style={{ top: '73%', left: '54%' }}>
-                    <span className="block w-2.5 h-2.5 rounded-full bg-white/20" />
-                    <span className="text-white/30 text-[11px]">台東</span>
-                  </div>
+              <div className="relative bg-[#0a0a0a] rounded-2xl border border-white/5 overflow-hidden">
+                {/* Real Google Maps embed centered on Taiwan */}
+                <div className="w-full h-[450px] md:h-[550px] relative">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1858252.1373089!2d119.89952!3d23.69781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346ef3065c07572f%3A0xe711f004bf9c5469!2z5Y-w54Gj!5e0!3m2!1szh-TW!2stw!4v1"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="雲管家據點地圖"
+                    className="rounded-t-2xl"
+                  />
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-                  <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-[#E5B94C] animate-pulse" />
-                    <span className="text-gray-400 text-sm">營運中據點</span>
+                {/* Store location cards overlay */}
+                <div className="p-6 md:p-8 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/95 to-transparent -mt-20 relative z-10 pt-24">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {/* 苗栗 x2 */}
+                    <a href="https://maps.google.com/?q=苗栗市玉清路51號" target="_blank" rel="noopener noreferrer"
+                      className="group bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:border-[#E5B94C]/40 hover:bg-white/[0.1] transition-all duration-300">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#E5B94C] animate-pulse" />
+                        <span className="text-white font-bold text-sm">苗栗</span>
+                        <span className="text-[#E5B94C] text-xs font-medium ml-auto">2 店</span>
+                      </div>
+                      <p className="text-gray-500 text-xs leading-relaxed">玉清店 · 農會店</p>
+                    </a>
+
+                    {/* 台中 x1 */}
+                    <a href="https://maps.google.com/?q=台中市西屯區福聯街22巷2號" target="_blank" rel="noopener noreferrer"
+                      className="group bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:border-[#E5B94C]/40 hover:bg-white/[0.1] transition-all duration-300">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#E5B94C] animate-pulse" />
+                        <span className="text-white font-bold text-sm">台中</span>
+                        <span className="text-[#E5B94C] text-xs font-medium ml-auto">1 店</span>
+                      </div>
+                      <p className="text-gray-500 text-xs leading-relaxed">熊愛洗</p>
+                    </a>
+
+                    {/* 嘉義 x1 */}
+                    <a href="https://maps.google.com/?q=嘉義市東區文雅街181號" target="_blank" rel="noopener noreferrer"
+                      className="group bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:border-[#E5B94C]/40 hover:bg-white/[0.1] transition-all duration-300">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#E5B94C] animate-pulse" />
+                        <span className="text-white font-bold text-sm">嘉義</span>
+                        <span className="text-[#E5B94C] text-xs font-medium ml-auto">1 店</span>
+                      </div>
+                      <p className="text-gray-500 text-xs leading-relaxed">悠洗自助洗衣</p>
+                    </a>
+
+                    {/* 高雄 x1 */}
+                    <a href="https://maps.google.com/?q=高雄市鳳山區北平路214號" target="_blank" rel="noopener noreferrer"
+                      className="group bg-white/[0.06] backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:border-[#E5B94C]/40 hover:bg-white/[0.1] transition-all duration-300">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#E5B94C] animate-pulse" />
+                        <span className="text-white font-bold text-sm">高雄</span>
+                        <span className="text-[#E5B94C] text-xs font-medium ml-auto">1 店</span>
+                      </div>
+                      <p className="text-gray-500 text-xs leading-relaxed">上好洗</p>
+                    </a>
                   </div>
-                  <span className="text-gray-600 hidden sm:inline">|</span>
-                  <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 rounded-full bg-white/15" />
-                    <span className="text-gray-500 text-sm">規劃擴展城市</span>
+
+                  <div className="flex items-center justify-center gap-3 mt-6 text-gray-500 text-sm">
+                    <span>覆蓋 4 縣市</span>
+                    <span className="text-gray-700">·</span>
+                    <span>5 家門店</span>
+                    <span className="text-gray-700">·</span>
+                    <span>30 台智慧機台</span>
                   </div>
-                  <span className="text-gray-600 hidden sm:inline">|</span>
-                  <span className="text-gray-500 text-sm">覆蓋 4 縣市 . 5 家門店 . 30 台智慧機台</span>
                 </div>
               </div>
             </motion.div>
